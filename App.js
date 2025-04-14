@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
+import { useFonts, Italiana } from '@expo-google-fonts/italiana';
 
 import Startup from './pages/Startup';
 import Home from './pages/Home';
@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Italiana_400Regular,
+    Italiana, 
   });
 
   if (!fontsLoaded) {
