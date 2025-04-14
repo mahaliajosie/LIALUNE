@@ -10,14 +10,41 @@ import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
+import { Ionicons } from '@expo/vector-icons';
 
 // SCREENS
 import Startup from './pages/Startup';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
-// Create stack navigator object, to define screen transitions
+// Create stack & tab navigator objects, to define screen transitions
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MainTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#E2D0B6',
+          borderTopWidth: 0,
+        },
+        tabBarIcon: ({ color, size }) => {
+          let iconName = route.name === 'Home' ? 'home' : 'person';
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#0068B8',
+        tabBarInactiveTintColor: '#D6EDFF',
+      })}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+}
 
 // Main App Function
 // - everything is initialized: screens, fonts, navigation, etc. 

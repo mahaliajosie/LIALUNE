@@ -29,18 +29,18 @@ export default function Startup({ navigation }) {
       
       Animated.timing(fadeAnim, { // fadeAnim from 0 to 1 (transparent -> visible)
         toValue: 1,
-        duration: 800, // in milliseconds 
+        duration: 1000, // in milliseconds 
         useNativeDriver: true, // enables better performance via native animation thread
       }),
 
-      Animated.delay(2000), // Pause animation for 2 seconds
+      Animated.delay(1000), // Pause animation for 2 seconds
       
       Animated.timing(fadeAnim, { // fadeAnim from 1 to 0 (visible -> transparent)
         toValue: 0,
-        duration: 700, // in milliseconds 
+        duration: 1000, // in milliseconds 
         useNativeDriver: true,
       }),
-    ]).start(() => navigation.replace('Home')); // (6) after animation sequences, replaces current screen with Home screen - with .replace() instead of .navigate() ensures Startup isnt left in the back stack
+    ]).start(() => navigation.replace('Main')); // (6) after animation sequences, prevents user from going back to the startup screen
   }, []); // (7) empty array ensures animation runs only once when the screen first loads
 
   // (8) Renders the Screen
@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     paddingBottom: Dimensions.get('window').height * 0.12,
   },
   logo: {
-    fontSize: 48,
-    fontWeight: '400',
+    fontSize: 52,
+    fontWeight: '600',
     fontFamily: 'Italiana_400Regular', // Lialune Font 
     color: '#0068B8', // color of Soluna Logo (Deep Cool Blue)
     textTransform: 'lowercase', // makes it stay lowercase
