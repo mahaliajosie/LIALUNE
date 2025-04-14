@@ -1,28 +1,46 @@
+// ===========================================================
+// ======================= LIALUNE App =======================
+// ===========================================================
+// - Controls all screens related to the Lialune App 
+// - Loads fonts, loading screen, & navigation between pages
+// -----------------------------------------------------------
+
+// IMPORTS
 import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
 
+// SCREENS
 import Startup from './pages/Startup';
 import Home from './pages/Home';
 
+// Create stack navigator object, to define screen transitions
 const Stack = createNativeStackNavigator();
 
+// Main App Function
+// - everything is initialized: screens, fonts, navigation, etc. 
 export default function App() {
+  // Load Fonts ('fontsLoaded' is a boolean)
   const [fontsLoaded] = useFonts({
     Italiana_400Regular, 
   });
 
   if (!fontsLoaded) {
+    // If fonts do not load, then display a temp screen with a loading spinner
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#125DAB" />
-        <Text>Loading............</Text>
+        <ActivityIndicator size="large" color="#70C1FF" /> 
+        <Text>Loading. . .</Text>
       </View>
     );
   }
 
+  // Main UI Return: 
+  // - 'NavigationContainer' = outer wrapper, enables navigation in app
+  // - 'Stack.Navigator' = sets up a stack navigation sturcture & 'headerShown: false' = hides default navigation bar at the top
+  // - 'Stack.Screen' = defines the screens in the app 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
