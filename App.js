@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Italiana } from '@expo-google-fonts/italiana';
 import AppLoading from 'expo-app-loading';
 
-import Startup from 'pages/Startup.js';
-import Home from 'pages/Home.js';
+import Startup from './pages/Startup';
+import Home from './pages/Home';
 
 const Stack = createNativeStackNavigator();
 

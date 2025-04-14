@@ -1,17 +1,23 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 
 export default function Startup({ navigation }) {
-  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    setTimeout(() => {
+    Animated.sequence([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.delay(1200),
       Animated.timing(fadeAnim, {
         toValue: 0,
         duration: 700,
         useNativeDriver: true,
-      }).start(() => navigation.replace('Home'));
-    }, 2000); // Display for 2 seconds
+      }),
+    ]).start(() => navigation.replace('Home'));
   }, []);
 
   return (
@@ -25,13 +31,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#CDE7F6',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    paddingBottom: Dimensions.get('window').height * 0.12,
   },
   logo: {
     fontSize: 48,
+    fontFamily: 'Italiana',
     color: '#125DAB',
-    fontFamily: 'Italiana_400Regular',
     textTransform: 'lowercase',
+    letterSpacing: 1,
   },
 });
