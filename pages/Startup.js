@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 48,
     fontWeight: '400',
-    fontFamily: 'Italiana', // Lialune Font 
+    fontFamily: 'Italiana_400Regular', // Lialune Font 
     color: '#0068B8', // color of Soluna Logo (Deep Cool Blue)
     textTransform: 'lowercase', // makes it stay lowercase
     letterSpacing: 1, // a bit of room between the letters
