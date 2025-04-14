@@ -7,15 +7,15 @@
 // ------------------------------------------------
 
 // (1) imports the React Library - core for writing functional components
-// • useEffect = React hook, for effects & animations after render
-// • useRef = Creates mutable value (fadeAnim) that persists between renders without triggering re-renders
+// * useEffect = React hook, for effects & animations after render
+// * useRef = Creates mutable value (fadeAnim) that persists between renders without triggering re-renders
 import React, { useEffect, useRef } from 'react';
 
 // (2) imports React Native UI components: 
-// • View = basic container
-// • Text = displays "Lialune" test
-// • StyleSheet = utility for creating optimized styles 
-// • Animated = provides animation capabilities (moving, fading, scaling, etc.)
+// * View = basic container
+// * Text = displays "Lialune" test
+// * StyleSheet = utility for creating optimized styles 
+// * Animated = provides animation capabilities (moving, fading, scaling, etc.)
 import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 
 // (3) Defines & exports the Startup screen - accepts 'navigation' prop from React Navigation, lets you move between screens
