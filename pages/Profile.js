@@ -32,16 +32,8 @@ export default function Profile() {
     setEditingName(!editingName);
   };
 
-// temp image
-{/* <Image
-  source={
-    image
-      ? { uri: image }
-      : 
-      require('./assets/hibiscus.png') // default profile image
-  }
-  style={styles.profilePic}
-/> */}
+// Temp Profile Image
+{/* { uri: 'https://placekitten.com/200/200' } // temp image from web */}
 
   return (
     <View style={styles.container}>
@@ -50,7 +42,7 @@ export default function Profile() {
           source={
             image
               ? { uri: image }
-              : { uri: 'https://placekitten.com/200/200' } // temp image from web
+              : require('./assets/adaptive-icon.png') // default profile image
           }
           style={styles.profilePic}
         />

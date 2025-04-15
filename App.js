@@ -2,7 +2,7 @@
 // ======================= LIALUNE App =======================
 // ===========================================================
 // - Controls all screens related to the Lialune App 
-// - Loads fonts, loading screen, & navigation between pages
+// - Loads fonts, icons, & navigation between pages
 // -----------------------------------------------------------
 
 // IMPORTS
@@ -23,21 +23,24 @@ import Profile from './pages/Profile';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// Defines tab bar at the bottom of the screen
 function MainTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarStyle: {
+      screenOptions={({ route }) => ({ // Grabs the "route" (screen name) to customize each page's appearance
+        headerShown: false, // hides top header bar for each screen (disables the default)
+        // Tab Bar appearance
+        tabBarStyle: { 
           backgroundColor: '#E2D0B6',
-          borderTopWidth: 0,
+          borderTopWidth: 0, // removes the default top border line on tab bar, cleans the look 
         },
-        tabBarIcon: ({ color, size }) => {
+        // Defines Icons in Tab Bar
+        tabBarIcon: ({ color, size }) => { 
           let iconName = route.name === 'Home' ? 'home' : 'person';
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#0068B8',
-        tabBarInactiveTintColor: '#D6EDFF',
+        tabBarActiveTintColor: '#0068B8', // Active = Dark Blue
+        tabBarInactiveTintColor: '#D6EDFF', // Inactive = Light Blue 
       })}
     >
       <Tab.Screen name="Home" component={Home} />
