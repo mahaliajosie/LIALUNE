@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden', // clip image to circle
     borderWidth: 2,
     borderColor: '#EADDCA', // Light Cream Border
+    marginTop: 45,
   },
   editIcon: {
     position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
