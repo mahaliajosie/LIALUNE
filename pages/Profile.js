@@ -11,6 +11,8 @@ import { View, Text, Image, TextInput, StyleSheet, Pressable, ScrollView } from 
 import * as ImagePicker from 'expo-image-picker'; // Allows user imports from device
 // import { Ionicons } from '@expo/vector-icons';
 import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 // Profile function - the screen users see for their profile page
 export default function Profile({ navigation }) {
@@ -167,14 +169,14 @@ export default function Profile({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#D6EDFF',      // light blue background (full screen)
-        paddingTop: 80,                  // top spacing to account for status bar & design 
+        backgroundColor: colors.backgroundLight,      // light blue background (full screen)
+        paddingTop: 80,                               // top spacing to account for status bar & design 
         // paddingHorizontal removed to let inner content manage its own horizontal padding
     },
     profileSection: {
-        alignItems: 'center',   // center pfp & name
-        marginBottom: 20,       // space below profile
-        borderBottomColor: '#70C1FF', // light gray line under each item
+        alignItems: 'center',                    // center pfp & name
+        marginBottom: 20,                        // space below profile
+        borderBottomColor: colors.mainLialune,   // Lialune blue line under name
         borderBottomWidth: 1,
     },
     profileWrapper: {
@@ -186,14 +188,14 @@ const styles = StyleSheet.create({
         borderRadius: 75, // circle profile pic
         overflow: 'hidden', // clip image to circle
         borderWidth: 2,
-        borderColor: '#EADDCA', // Light Cream Border
+        borderColor: colors.backgroundCream, // Light Cream Border
         // marginTop: 25,
       },
       editIcon: {
         position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
         bottom: 5, 
         right: 5,
-        backgroundColor: '#70C1FF', // Deep Sky Blue (Lialune Blue)
+        backgroundColor: colors.mainLialune, // Deep Sky Blue (Lialune Blue)
         borderRadius: 20, // small circlular badge
         padding: 5,
       },
@@ -201,16 +203,16 @@ const styles = StyleSheet.create({
     nameText: {
         fontSize: 42,
         marginTop: 18, // space between name & profile picture
-        fontFamily: 'Italiana_400Regular',
-        color: '#70C1FF', // Lialune Blue
+        fontFamily: fonts.title, // font = Italiana
+        color: colors.mainLialune, // Lialune Blue
     },
     nameInput: {
         fontSize: 42,
         marginTop: 18,
-        fontFamily: 'Italiana_400Regular',
+        fontFamily: fonts.title,
         color: '#1E3D59',
         borderBottomWidth: 1,
-        borderColor: '#EADDCA',
+        borderColor: colors.backgroundCream,
     },
     titleWrapper: {
     // paddingHorizontal: 20,
@@ -218,18 +220,18 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 24,
-        fontFamily: 'RammettoOne_400Regular',
-        color: '#0068B8', // Deep Blue for "Routine" title
+        fontFamily: fonts.heading,
+        color: colors.primaryDeepBlue, // Deep Blue for "Routine" title
         marginBottom: 10,
         textAlign: 'left',
-        paddingHorizontal: 16,
+        paddingHorizontal: 18,
     },
     scrollContainer: {
         flexGrow: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        paddingHorizontal: 48,         // side padding for all scroll container
-        paddingBottom: 50,             // bottom padding so last items aren't cut off
+        paddingHorizontal: 48,   // side padding for all scroll container
+        paddingBottom: 50,       // bottom padding so last items aren't cut off
     },
     menuRow: {
         flexDirection: 'row', // makes row horizontal
@@ -244,13 +246,13 @@ const styles = StyleSheet.create({
     menuText: {
         flex: 1,          // take up remaining space so arrow is pushed to far right
         fontSize: 18,
-        color: '#0068B8', // Deep Blue for each category/Option
-        fontFamily: 'Gantari_500Medium',
+        color: colors.primaryDeepBlue, // Deep Blue for each category/Option
+        fontFamily: fonts.body,
     },
     divider: {
-        height: 4,                     // thicker line
-        width: '75%',                  // shorter line
-        backgroundColor: '#EADDCA',    // light cream color
+        height: 4,                                  // thicker line
+        width: '75%',                               // shorter line
+        backgroundColor: colors.backgroundCream,    // light cream color
         borderRadius: 10,              // round edges
         alignSelf: 'center',           // center in container
         marginVertical: 20,            // spacing above and below
