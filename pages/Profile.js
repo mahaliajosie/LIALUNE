@@ -39,7 +39,7 @@ export default function Profile() {
           source={
             image
               ? { uri: image }
-              : require('../assets/default-profile.png') // replace with default image in your assets folder
+              : require('assets/hibiscus.JPEG') // default profile image
           }
           style={styles.profilePic}
         />
