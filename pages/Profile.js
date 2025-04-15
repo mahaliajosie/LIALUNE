@@ -80,7 +80,7 @@ export default function Profile({ navigation }) {
         <View style={styles.sectionWrapper}>
             <Text style={styles.sectionTitle}>Routine</Text>
         <ScrollView 
-            contentContainerStyle={styles.sectionContainer}
+            contentContainerStyle={styles.scrollContainer}
             showsVerticalScrollIndicator={false}
         >
             {/* --------------------------------------------------------- */}
@@ -242,12 +242,11 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingHorizontal: 16,
   },
-  sectionContainer: {
-    // marginTop: 30,
-    // width: '85%',
-    // alignItems: 'center',
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
     paddingHorizontal: 48,         // side padding for all scroll container
-    paddingBottom: 40,             // bottom padding so last items aren't cut off
+    paddingBottom: 80,             // bottom padding so last items aren't cut off
   },
   menuRow: {
     flexDirection: 'row', // makes row horizontal
@@ -270,7 +269,7 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 4,
     // marginVertical: 20,
     height: 4,                     // thicker line
-    width: '60%',                  // shorter line
+    width: '75%',                  // shorter line
     backgroundColor: '#EADDCA',    // light cream color
     borderRadius: 10,              // round edges
     alignSelf: 'center',           // center in container
