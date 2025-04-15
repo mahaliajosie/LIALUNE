@@ -7,24 +7,25 @@
 // ------------------------------------------------
 
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, Pressable } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Profile() {
-  const [image, setImage] = useState(null);
-  const [name, setName] = useState('Mahalia');
-  const [editingName, setEditingName] = useState(false);
+  const [image, setImage] = useState(null); // uploaded image uri
+  const [name, setName] = useState('Mahalia'); // default name
+  const [editingName, setEditingName] = useState(false); // edit name toggle
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.AssetType.Images,
-      allowsEditing: true,
+      allowsEditing: true, // enables cropping
       aspect: [1, 1], // crop box
       quality: 1,
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0].uri); // image uri from picker
     }
   };
 
@@ -35,21 +36,29 @@ export default function Profile() {
 // Temp Profile Image
 {/* { uri: 'https://placekitten.com/200/200' } // temp image from web */}
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={pickImage}>
-        <Image
+{/* <Image
           source={
             image
               ? { uri: image }
-              : require('./assets/adaptive-icon.png') // default profile image
+              : require('assets/spaPup.jpg') // default profile image
+          }
+          style={styles.profilePic}
+        /> */}
+
+  return (
+    <View style={styles.container}>
+      <Pressable onPress={pickImage}>
+        <Image
+          source={
+            image ? { uri: image } : require('../assets/spaPup.jpg') // default profile image
           }
           style={styles.profilePic}
         />
         <View style={styles.editIcon}>
-          <Text style={{ color: '#fff' }}>✎</Text>
+          {/* <Text style={{ color: '#fff' }}>✎</Text> */}
+          <Ionicons name="pencil" size={20} color="#70C1FF" />
         </View>
-      </TouchableOpacity>
+      </Pressable>
 
       <TouchableOpacity onPress={toggleEditName}>
         {editingName ? (
@@ -73,34 +82,34 @@ export default function Profile() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#DDECF5',
+    backgroundColor: '#D6EDFF', // Light Blue for whole page
     alignItems: 'center',
     paddingTop: 60,
   },
   profilePic: {
-    width: 130,
-    height: 130,
-    borderRadius: 65, // circle profile pic
+    width: 150,
+    height: 150,
+    borderRadius: 75, // circle profile pic
     overflow: 'hidden', // clip image to circle
     borderWidth: 2,
-    borderColor: '#B2D4E8',
+    borderColor: '#EADDCA', // Light Cream Border
   },
   editIcon: {
     position: 'absolute',
     bottom: 5,
     right: 5,
-    backgroundColor: '#125DAB',
+    backgroundColor: '#70C1FF', // Deep Sky Blue (Lialune Blue)
     borderRadius: 12,
     padding: 5,
   },
   nameText: {
-    fontSize: 24,
+    fontSize: 42,
     marginTop: 12,
     fontFamily: 'Italiana_400Regular',
-    color: '#1E3D59',
+    color: '#70C1FF', // Lialune Blue
   },
   nameInput: {
-    fontSize: 24,
+    fontSize: 42,
     marginTop: 12,
     fontFamily: 'Italiana_400Regular',
     color: '#1E3D59',
