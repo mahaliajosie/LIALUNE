@@ -12,6 +12,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
+import { Gantari_500Medium } from '@expo-google-fonts/gantari';
+import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 import { Ionicons } from '@expo/vector-icons';
 
 // SCREENS
@@ -54,7 +56,9 @@ function MainTabs() {
 export default function App() {
   // Load Fonts ('fontsLoaded' is a boolean)
   const [fontsLoaded] = useFonts({
-    Italiana_400Regular
+    Italiana_400Regular,
+    RammettoOne_400Regular,
+    Gantari_500Medium,
   });
 
   if (!fontsLoaded) {

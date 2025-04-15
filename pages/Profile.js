@@ -7,7 +7,7 @@
 // ------------------------------------------------
 
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, Pressable, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'; // Allows user imports from device
 import { Ionicons } from '@expo/vector-icons';
 
@@ -41,7 +41,9 @@ export default function Profile() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView 
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}>
         {/* ------------------ Upload Profile Image ------------------ */}
         <Pressable onPress={pickImage}>
             <Image
@@ -84,7 +86,7 @@ export default function Profile() {
             <Option label="color" icon="color-palette-outline" />
         </View>
         {/* -------------------------------------------------------------- */}   
-    </View>
+    </ScrollView>
   );
 }
 
@@ -106,6 +108,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#D6EDFF', // Light Blue for whole page
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
     paddingTop: 80,
   },
   profilePic: {
@@ -145,7 +149,8 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'RammettoOne_400Regular',
     color: '#0068B8', // Deep Blue for "Routine" title
     marginBottom: 10,
   },
@@ -160,10 +165,14 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 18,
     color: '#0068B8', // Deep Blue for each category/Option
+    fontFamily: 'Gantari_500Medium',
   },
   divider: {
     height: 1,
-    backgroundColor: '#FBF8F4',
+    backgroundColor: '#FBF8F4', // Light Cream divider
     marginVertical: 20,
+  },
+  scrollContainer: {
+    paddingBottom: 40,
   },
 });
