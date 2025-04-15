@@ -76,13 +76,15 @@ export default function Profile({ navigation }) {
                 </Pressable>
             )}
         </View>
+
+        <View style={styles.sectionWrapper}>
+            <Text style={styles.sectionTitle}>Routine</Text>
         <ScrollView 
             contentContainerStyle={styles.sectionContainer}
             showsVerticalScrollIndicator={false}
         >
             {/* --------------------------------------------------------- */}
             {/* ---------------------- Routine Sections ---------------------- */}
-            <Text style={styles.sectionTitle}>Routine</Text>
             {/* ////// FACE ////// */}
             <Pressable 
                 style={styles.menuRow} 
@@ -164,6 +166,7 @@ export default function Profile({ navigation }) {
             </View> */}
             {/* -------------------------------------------------------------- */}   
             </ScrollView>
+            </View>
     </View>
   );
 }
@@ -198,7 +201,7 @@ const styles = StyleSheet.create({
     profilePic: {
         width: 150,
         height: 150,
-        borderRadius: 60, // circle profile pic
+        borderRadius: 75, // circle profile pic
         overflow: 'hidden', // clip image to circle
         borderWidth: 2,
         borderColor: '#EADDCA', // Light Cream Border
@@ -210,29 +213,14 @@ const styles = StyleSheet.create({
         right: 5,
         backgroundColor: '#70C1FF', // Deep Sky Blue (Lialune Blue)
         borderRadius: 20, // small circlular badge
-        // padding: 5,
+        padding: 5,
       },
-//   scrollContainer: {
-//     flexGrow: 1, // full scrolling area height
-//     backgroundColor: '#D6EDFF', // Light Blue for whole page
-//     alignItems: 'center',
-//     justifyContent: 'flex-start',
-//     paddingHorizontal: 20,
-//     paddingTop: 80,
-//     paddingBottom: 80,
-//   },
-//   profileWrapper: {
-//     flex: 1,
-//     backgroundColor: '#D6EDFF',
-//     alignItems: 'center',
-//   },
   
   nameText: {
     fontSize: 42,
     marginTop: 18, // space between name & profile picture
     fontFamily: 'Italiana_400Regular',
     color: '#70C1FF', // Lialune Blue
-    // alignItems: 'center',
   },
   nameInput: {
     fontSize: 42,
@@ -241,20 +229,25 @@ const styles = StyleSheet.create({
     color: '#1E3D59',
     borderBottomWidth: 1,
     borderColor: '#EADDCA',
-    // paddingHorizontal: 8,
   },
-  sectionContainer: {
-    // marginTop: 30,
-    // width: '85%',
-    // alignItems: 'center',
-    paddingHorizontal: 20,         // side padding for all scroll container
-    paddingBottom: 40,             // bottom padding so last items aren't cut off
+  titleWrapper: {
+    paddingHorizontal: 20,
+    flex: 1,
   },
   sectionTitle: {
     fontSize: 24,
     fontFamily: 'RammettoOne_400Regular',
     color: '#0068B8', // Deep Blue for "Routine" title
     marginBottom: 10,
+    textAlign: 'left',
+    paddingHorizontal: 16,
+  },
+  sectionContainer: {
+    // marginTop: 30,
+    // width: '85%',
+    // alignItems: 'center',
+    paddingHorizontal: 48,         // side padding for all scroll container
+    paddingBottom: 40,             // bottom padding so last items aren't cut off
   },
   menuRow: {
     flexDirection: 'row', // makes row horizontal
@@ -273,12 +266,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Gantari_500Medium',
   },
   divider: {
-    borderBottomColor: '#B6C3D1', // slightly bolder line for section break
-    borderBottomWidth: 1,
-    marginVertical: 20,
-    // height: 1,
-    // backgroundColor: '#FBF8F4', // Light Cream divider
+    // borderBottomColor: '#EADDCA', // slightly bolder line for section break
+    // borderBottomWidth: 4,
     // marginVertical: 20,
-    // alignItems: 'center',
+    height: 4,                     // thicker line
+    width: '60%',                  // shorter line
+    backgroundColor: '#EADDCA',    // light cream color
+    borderRadius: 10,              // round edges
+    alignSelf: 'center',           // center in container
+    marginVertical: 20,            // spacing above and below
   },
 });
