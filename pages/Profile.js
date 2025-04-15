@@ -37,7 +37,8 @@ export default function Profile() {
   source={
     image
       ? { uri: image }
-      : { uri: 'https://placekitten.com/200/200' } // temporary image from web
+      : 
+      require('./assets/hibiscus.png') // default profile image
   }
   style={styles.profilePic}
 /> */}
@@ -49,7 +50,7 @@ export default function Profile() {
           source={
             image
               ? { uri: image }
-              : require('./assets/hibiscus.png') // default profile image
+              : { uri: 'https://placekitten.com/200/200' } // temp image from web
           }
           style={styles.profilePic}
         />

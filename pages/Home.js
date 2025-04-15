@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 24,
-    fontFamily: 'Italiana_400Regular',
     color: '#1A3C70',
+    fontFamily: 'Italiana_400Regular',
   },
 });

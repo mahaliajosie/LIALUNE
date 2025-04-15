@@ -51,7 +51,7 @@ function MainTabs() {
 export default function App() {
   // Load Fonts ('fontsLoaded' is a boolean)
   const [fontsLoaded] = useFonts({
-    Italiana_400Regular, 
+    Italiana_400Regular
   });
 
   if (!fontsLoaded) {
@@ -72,7 +72,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Startup" component={Startup} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Main" component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
