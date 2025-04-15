@@ -40,12 +40,9 @@ export default function Profile() {
     }
   };
 
-//   const toggleEditName = () => {
-//     setEditingName(!editingName);
-//   };
-
   return (
     <View style={styles.container}>
+        {/* ------------------ Upload Profile Image ------------------ */}
         <Pressable onPress={pickImage}>
             <Image
                 source={
@@ -55,11 +52,12 @@ export default function Profile() {
             />
             <View style={styles.editIcon}>
                 {/* <Text style={{ color: '#fff' }}>✎</Text> */}
-                {/* <Ionicons name="pencil" size={20} color="#70C1FF" /> */}
-                <Ionicons name="create-outline" size={20} color="#70C1FF"/>
+                {/* <Ionicons name="create-outline" size={20} color="#70C1FF" /> */}
+                <Ionicons name="pencil" size={20} color="#EADDCA"/>
             </View>
         </Pressable>
-        
+        {/* ----------------------------------------------------------- */}
+        {/* ---------------------- Edit Name ---------------------- */}
         {editingName ? (
             <TextInput
                 style={styles.nameInput}
@@ -73,33 +71,42 @@ export default function Profile() {
                 <Text style={styles.nameText}>{name}</Text>
             </Pressable>
         )}
-
-      {/* Previous Editing Name */}
-      {/* <TouchableOpacity onPress={toggleEditName}>
-        {editingName ? (
-          <TextInput
-            style={styles.nameInput}
-            value={name}
-            onChangeText={setName}
-            onBlur={() => setEditingName(false)}
-            autoFocus
-          />
-        ) : (
-          <Text style={styles.nameText}>{name}</Text>
-        )}
-      </TouchableOpacity> */}
-
-      {/* Add your routine sections here below if needed */}
+        {/* --------------------------------------------------------- */}
+        {/* ---------------------- Routine Sections ---------------------- */}
+        <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Routine</Text>
+            <Option label="face" icon="happy-outline" />
+            <Option label="hair" icon="cut-outline" />
+            <Option label="body" icon="body-outline" />
+            <Option label="nails" icon="finger-print-outline" />
+            <View style={styles.divider} /> 
+            <Option label="favorites" icon="heart-outline" />
+            <Option label="color" icon="color-palette-outline" />
+        </View>
+        {/* -------------------------------------------------------------- */}   
     </View>
   );
 }
 
+// Function that gives each category row with a left icon, text, then right arrow
+function Option({ label, icon }) {
+    return (
+      <Pressable style={styles.optionRow}>
+        <Ionicons name={icon} size={20} color="#125DAB" style={styles.optionIcon} />
+        <Text style={styles.optionText}>{label}</Text>
+        <Ionicons name="chevron-forward" size={20} color="#125DAB" style={{ marginLeft: 'auto' }} />
+      </Pressable>
+    );
+  }  
+
+
+// UI Style for Profile
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#D6EDFF', // Light Blue for whole page
     alignItems: 'center',
-    paddingTop: 60,
+    paddingTop: 80,
   },
   profilePic: {
     width: 150,
@@ -110,26 +117,53 @@ const styles = StyleSheet.create({
     borderColor: '#EADDCA', // Light Cream Border
   },
   editIcon: {
-    position: 'absolute',
-    bottom: 5,
+    position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
+    bottom: 5, 
     right: 5,
     backgroundColor: '#70C1FF', // Deep Sky Blue (Lialune Blue)
-    borderRadius: 12,
+    borderRadius: 20, // small circlular badge
     padding: 5,
   },
   nameText: {
     fontSize: 42,
-    marginTop: 12,
+    marginTop: 18,
     fontFamily: 'Italiana_400Regular',
     color: '#70C1FF', // Lialune Blue
   },
   nameInput: {
     fontSize: 42,
-    marginTop: 12,
+    marginTop: 18,
     fontFamily: 'Italiana_400Regular',
     color: '#1E3D59',
     borderBottomWidth: 1,
-    borderColor: '#aaa',
+    borderColor: '#EADDCA',
     paddingHorizontal: 8,
+  },
+  section: {
+    marginTop: 30,
+    width: '85%',
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#0068B8', // Deep Blue for "Routine" title
+    marginBottom: 10,
+  },
+  optionRow: {
+    flexDirection: 'row', // makes row horizontal
+    alignItems: 'center',
+    paddingVertical: 25,
+  },
+  optionIcon: {
+    marginRight: 12, // add space between icon & label
+  },
+  optionText: {
+    fontSize: 18,
+    color: '#0068B8', // Deep Blue for each category/Option
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#FBF8F4',
+    marginVertical: 20,
   },
 });
