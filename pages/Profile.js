@@ -7,16 +7,27 @@
 // ------------------------------------------------
 
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, Pressable } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { View, Text, Image, TextInput, StyleSheet, Pressable } from 'react-native';
+import * as ImagePicker from 'expo-image-picker'; // Allows user imports from device
 import { Ionicons } from '@expo/vector-icons';
 
+// Profile function - the screen users see for their profile page
 export default function Profile() {
-  const [image, setImage] = useState(null); // uploaded image uri
+  const [image, setImage] = useState(null); // users' uploaded image uri is held here OR default
   const [name, setName] = useState('Mahalia'); // default name
-  const [editingName, setEditingName] = useState(false); // edit name toggle
+  const [editingName, setEditingName] = useState(false); // edit name toggle - if the name currently being edited
 
+  // Function to open image library of a user
   const pickImage = async () => {
+
+    // Grabs access to the user's photo library
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+        alert('Permission to access photo library is required!');
+        return;
+      }
+
+    // Opens up the photo library & enables cropping
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.AssetType.Images,
       allowsEditing: true, // enables cropping
@@ -25,42 +36,46 @@ export default function Profile() {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri); // image uri from picker
+      setImage(result.assets[0].uri); // save image uri from ImagePicker
     }
   };
 
-  const toggleEditName = () => {
-    setEditingName(!editingName);
-  };
-
-// Temp Profile Image
-{/* { uri: 'https://placekitten.com/200/200' } // temp image from web */}
-
-{/* <Image
-          source={
-            image
-              ? { uri: image }
-              : require('assets/spaPup.jpg') // default profile image
-          }
-          style={styles.profilePic}
-        /> */}
+//   const toggleEditName = () => {
+//     setEditingName(!editingName);
+//   };
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={pickImage}>
-        <Image
-          source={
-            image ? { uri: image } : require('../assets/spaPup.jpg') // default profile image
-          }
-          style={styles.profilePic}
-        />
-        <View style={styles.editIcon}>
-          {/* <Text style={{ color: '#fff' }}>✎</Text> */}
-          <Ionicons name="pencil" size={20} color="#70C1FF" />
-        </View>
-      </Pressable>
+        <Pressable onPress={pickImage}>
+            <Image
+                source={
+                    image ? { uri: image } : require('../assets/spaPup.jpg') // default profile image
+                }
+                style={styles.profilePic}
+            />
+            <View style={styles.editIcon}>
+                {/* <Text style={{ color: '#fff' }}>✎</Text> */}
+                {/* <Ionicons name="pencil" size={20} color="#70C1FF" /> */}
+                <Ionicons name="create-outline" size={20} color="#70C1FF"/>
+            </View>
+        </Pressable>
+        
+        {editingName ? (
+            <TextInput
+                style={styles.nameInput}
+                value={name}
+                onChange={setName}
+                onBlur={() => setEditingName(false)}
+                autoFocus
+            />
+        ) : (
+            <Pressable onPress={() => setEditingName(true)}>
+                <Text style={styles.nameText}>{name}</Text>
+            </Pressable>
+        )}
 
-      <TouchableOpacity onPress={toggleEditName}>
+      {/* Previous Editing Name */}
+      {/* <TouchableOpacity onPress={toggleEditName}>
         {editingName ? (
           <TextInput
             style={styles.nameInput}
@@ -72,7 +87,7 @@ export default function Profile() {
         ) : (
           <Text style={styles.nameText}>{name}</Text>
         )}
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       {/* Add your routine sections here below if needed */}
     </View>
