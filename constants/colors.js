@@ -4,10 +4,12 @@
 export default {
     backgroundLight: '#D6EDFF',      // Light Blue background
     backgroundCream: '#EADDCA',      // Light Cream
+    bottomKhaki: '#E2D0B6',          // Dark Khaki for botttom Navi bar
     primaryDeepBlue: '#0068B8',      // Deep Blue (Headings/Buttons)
     mainLialune: '#70C1FF',          // Lialune Blue (Highlight)
     textPrimary: '#1E3D59',          // Standard dark text
     textSecondary: '#125DAB',        // Soft blue
+    inactiveBlue: '#D6EDFF',         // Light Blue (for Inactive Tabs)
     accent: '#F8E1DB',               // Coral accent
     white: '#FFFFFF',
     black: '#000000',

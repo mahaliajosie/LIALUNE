@@ -16,9 +16,9 @@ import fonts from '../constants/fonts';
 
 // Profile function - the screen users see for their profile page
 export default function Profile({ navigation }) {
-  const [image, setImage] = useState(null); // users' uploaded image uri is held here OR default
-  const [name, setName] = useState('Mahalia'); // default name
-  const [editingName, setEditingName] = useState(false); // edit name toggle - if the name currently being edited
+  const [image, setImage] = useState(null);               // users' uploaded image uri is held here OR default
+  const [name, setName] = useState('Mahalia');            // default name
+  const [editingName, setEditingName] = useState(false);  // edit name toggle - if the name currently being edited
 
   // Function to open image library of a user
   const pickImage = async () => {

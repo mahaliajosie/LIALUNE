@@ -40,7 +40,7 @@ export default function Startup({ navigation }) {
         duration: 1000, // in milliseconds 
         useNativeDriver: true,
       }),
-    ]).start(() => navigation.replace('Main')); // (6) after animation sequences, prevents user from going back to the startup screen
+    ]).start(() => navigation.replace('BottomTabs')); // (6) after animation sequences, prevents user from going back to the startup screen
   }, []); // (7) empty array ensures animation runs only once when the screen first loads
 
   // (8) Renders the Screen

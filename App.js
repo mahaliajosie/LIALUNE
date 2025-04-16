@@ -23,41 +23,13 @@ import BottomTabs from './navigation/BottomTabs';
 // import Home from './pages/Home';
 // import Profile from './pages/Profile';
 
-// Create stack & tab navigator objects, to define screen transitions
+// Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();
-// const Tab = createBottomTabNavigator();
-
-// Defines tab bar at the bottom of the screen
-// function MainTabs() {
-//   return (
-//     <Tab.Navigator
-//       screenOptions={({ route }) => ({ // Grabs the "route" (screen name) to customize each page's appearance
-//         headerShown: false, // hides top header bar for each screen (disables the default)
-//         // Tab Bar appearance
-//         tabBarStyle: { 
-//           backgroundColor: '#E2D0B6',
-//           borderTopWidth: 0, // removes the default top border line on tab bar, cleans the look 
-//         },
-//         // Defines Icons in Tab Bar
-//         tabBarIcon: ({ color, size }) => { 
-//           let iconName = route.name === 'Home' ? 'home' : 'person';
-//           return <Ionicons name={iconName} size={size} color={color} />;
-//         },
-//         tabBarActiveTintColor: '#0068B8', // Active = Dark Blue
-//         tabBarInactiveTintColor: '#D6EDFF', // Inactive = Light Blue 
-//       })}
-//     >
-//       <Tab.Screen name="Home" component={Home} />
-//       <Tab.Screen name="Profile" component={Profile} />
-//     </Tab.Navigator>
-//   );
-// }
 
 // Main App Function
 // - everything is initialized: screens, fonts, navigation, etc. 
 export default function App() {
-  // Load Fonts ('fontsLoaded' is a boolean)
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({   // Load Fonts ('fontsLoaded' is a boolean)
     Italiana_400Regular,
     RammettoOne_400Regular,
     Gantari_500Medium,
