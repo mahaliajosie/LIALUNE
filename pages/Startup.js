@@ -18,6 +18,9 @@ import React, { useEffect, useRef } from 'react';
 // * Animated = provides animation capabilities (moving, fading, scaling, etc.)
 import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
+
 // (3) Defines & exports the Startup screen - accepts 'navigation' prop from React Navigation, lets you move between screens
 export default function Startup({ navigation }) {
   const fadeAnim = useRef(new Animated.Value(0)).current; // creates animated value, starting from 0 (transparent) - Used to control opacity
@@ -40,7 +43,7 @@ export default function Startup({ navigation }) {
         duration: 1000, // in milliseconds 
         useNativeDriver: true,
       }),
-    ]).start(() => navigation.replace('BottomTabs')); // (6) after animation sequences, prevents user from going back to the startup screen
+    ]).start(() => navigation.replace('Navigation')); // (6) after animation sequences, prevents user from going back to the startup screen
   }, []); // (7) empty array ensures animation runs only once when the screen first loads
 
   // (8) Renders the Screen
@@ -57,17 +60,17 @@ export default function Startup({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // full screen height & width
-    backgroundColor: '#D6EDFF', // Background color (Soft Sky Blue)
-    justifyContent: 'center', // centers Vertically
-    alignItems: 'center', // centers Horizontally 
+    backgroundColor: colors.backgroundLight, // Background color (Soft Sky Blue)
+    justifyContent: 'center',   // centers Vertically
+    alignItems: 'center',       // centers Horizontally 
     paddingBottom: Dimensions.get('window').height * 0.12,
   },
   logo: {
     fontSize: 52,
     fontWeight: '600',
-    fontFamily: 'Italiana_400Regular', // Lialune Font 
-    color: '#0068B8', // color of Soluna Logo (Deep Cool Blue)
-    textTransform: 'lowercase', // makes it stay lowercase
-    letterSpacing: 1, // a bit of room between the letters
+    fontFamily: fonts.title,             // Lialune Font 
+    color: colors.primaryDeepBlue,       // color of Soluna Logo (Deep Cool Blue)
+    textTransform: 'lowercase',          // makes it stay lowercase
+    letterSpacing: 1,                    // a bit of room between the letters
   },
 });

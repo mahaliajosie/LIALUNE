@@ -10,18 +10,14 @@ import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
 import { Gantari_500Medium } from '@expo-google-fonts/gantari';
 import { Gantari_400Regular } from '@expo-google-fonts/gantari';
 import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
-// import { Ionicons } from '@expo/vector-icons';
 
 // SCREENS
 import Startup from './pages/Startup';
-import BottomTabs from './navigation/BottomTabs';
-// import Home from './pages/Home';
-// import Profile from './pages/Profile';
+import NaviTabs from './navigation/NaviTabs';
 
 // Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();
@@ -54,7 +50,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Startup" component={Startup} />
-        <Stack.Screen name="Navigation" component={BottomTabs} />
+        <Stack.Screen name="Navigation" component={NaviTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

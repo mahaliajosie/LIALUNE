@@ -11,7 +11,7 @@ import Profile from '../pages/Profile';
 const Tab = createBottomTabNavigator();
 
 // Defines tab bar at the bottom of the screen
-export default function BottomTabs() {
+export default function NaviTabs() {
     return (
       <Tab.Navigator
         screenOptions={({ route }) => ({ // Grabs the "route" (screen name) to customize each page's appearance
