@@ -1,52 +1,64 @@
-// ======================================================
-// ==================== Routine Rows ====================
-// ======================================================
+// ============================================================
+// ======================= Routine Rows =======================
+// ============================================================
+// - Responsible for row of options:
+//    * Search Input, Daily Toggle & Day of the Week Selection
+// ------------------------------------------------------------
 // - Reusable option rows for:
 // - search bar, toggle mode, & any row with icon & text
 // - Renders the products: image, name, brand & step
-// ------------------------------------------------------
+// ------------------------------------------------------------
 import React from 'react';
-import { View, TextInput, Text, Pressable, Switch } from 'react-native';
+import { View, Text, TextInput, Switch, Pressable, StyleSheet } from 'react-native';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
-export default function RoutineRows({ search, setSearch, dailyMode, toggleDailyMode, selectedDay, setSelectedDay }) {
+export default function RoutineRow({
+  search,
+  setSearch,
+  dailyMode,
+  toggleDailyMode,
+  selectedDay,
+  setSelectedDay
+}) {
   const days = ['MON', 'TUES', 'WED', 'THR', 'FRI', 'SAT', 'SUN'];
 
   return (
-    <View>
-      <TextInput
-        placeholder="+ add"
-        value={search}
-        onChangeText={setSearch}
-        style={{
-          backgroundColor: '#F5F5F5',
-          padding: 12,
-          borderRadius: 10,
-          marginVertical: 12,
-          color: '#125DAB',
-        }}
-        placeholderTextColor="#70C1FF"
-      />
+    <View style={styles.wrapper}>
+      {/* ------ Search ------ */}
+      <View style={styles.searchContainer}>
+        <TextInput
+          placeholder="+ add" // shown when nothing is typed
+          value={search}
+          onChangeText={setSearch}
+          placeholderTextColor={colors.mainLialune}
+          style={styles.searchInput}
+        />
+      </View>
 
-      <View style={{ alignItems: 'center', marginVertical: 10 }}>
+      {/* ------ Toggle ------ */}
+      <View style={styles.toggleRow}>
         <Switch
           value={dailyMode}
           onValueChange={toggleDailyMode}
-          trackColor={{ false: '#ccc', true: '#70C1FF' }}
-          thumbColor={dailyMode ? '#fff' : '#eee'}
+          trackColor={{ false: colors.inactiveBlue, true: colors.mainLialune }}
+          thumbColor={colors.white} // white dot on toggle
         />
-        <Text style={{ color: '#70C1FF', marginTop: 5 }}>daily</Text>
+        <Text style={styles.toggleLabel}>daily</Text>
       </View>
 
+      {/* ------ Days of Week ------ */}
       {dailyMode && (
-        <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
-          {days.map((day, index) => (
-            <Pressable key={index} onPress={() => setSelectedDay(index)}>
-              <Text style={{
-                marginHorizontal: 6,
-                color: selectedDay === index ? '#70C1FF' : '#125DAB',
-                fontWeight: selectedDay === index ? 'bold' : 'normal',
-                textDecorationLine: selectedDay === index ? 'underline' : 'none',
-              }}>
+        <View style={styles.daysRow}>
+          {/* --- loops through the 7 days & creates a button for each --- */}
+          {days.map((day, index) => ( 
+            <Pressable key={day} onPress={() => setSelectedDay(index)}>
+              <Text
+                style={[
+                  styles.dayText, // Displays Day name in base style
+                  selectedDay === index && styles.activeDayText, // Active DAY style in bold
+                ]}
+              >
                 {day}
               </Text>
             </Pressable>
@@ -56,3 +68,51 @@ export default function RoutineRows({ search, setSearch, dailyMode, toggleDailyM
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  searchContainer: {
+    backgroundColor: colors.darkCream,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
+  searchInput: {
+    fontSize: 16,
+    color: '#125DAB',        // Search Input Color = ? 
+    fontFamily: fonts.body,
+  },
+  toggleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 14,
+  },
+  toggleLabel: {    // --- DAILY text ---
+    fontSize: 20,
+    fontFamily: fonts.subtext,
+    color: colors.mainLialune,
+    marginLeft: 8,
+  },
+  daysRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  dayText: {
+    fontSize: 14,
+    fontFamily: fonts.title,
+    color: colors.accent,
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+  },
+  activeDayText: {
+    // fontSize: 14,
+    fontFamily: fonts.title,
+    textDecorationLine: 'underline',
+    color: colors.mainLialune,
+  },
+});

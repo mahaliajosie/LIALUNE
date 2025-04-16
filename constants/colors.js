@@ -14,6 +14,7 @@ export default {
     white: '#FFFFFF',
     black: '#000000',
     lightCream: '#FBF8F4',
+    darkCream: '#F0EDE6',
 
     // Additional Themes
     themes: {
