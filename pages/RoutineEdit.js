@@ -7,14 +7,14 @@
 // -----------------------------------------------------
 
 import React, { useState, useCallback } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, ScrollView, Switch } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { View, Text, Pressable, StyleSheet, ScrollView, Switch } from 'react-native';
+// import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
-// Components
+// ---------- Components ----------
 import RoutineRows from '../components/RoutineRows';
 import RoutineItems from '../components/RoutineItems';
 // import routineData from '../data/routineData';
@@ -26,7 +26,7 @@ const testData = [
     { id: '3', title: 'Toner', brands: 'Anua', image: 'https://asianbeautyessentials.com/cdn/shop/files/ANUA77TONER1_5fc7ec57-1447-4883-b0ce-70905ea60573_1024x.png?v=1740704275', step: 3 }, 
 ]
 
-// Routine Edit Function
+// ---------- Routine Edit Function ----------
 export default function RoutineEdit({ route }) {
   const { category } = route.params;
   const [searchQuery, setSearchQuery] = useState('');
@@ -61,14 +61,14 @@ export default function RoutineEdit({ route }) {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* ---------- Header ---------- */}
       <View style={styles.header}>
         <Ionicons name="arrow-back" size={24} color={colors.lightCream} />
         <Text style={styles.title}>{category}</Text>
         <View style={{ width: 24 }} />
       </View>
 
-      {/* Search Bar */}
+      {/* ---------- Search Bar ---------- */}
       <View style={styles.searchBox}>
         <Ionicons name="add-circle" size={24} color="#70C1FF" />
         <TextInput
@@ -80,13 +80,13 @@ export default function RoutineEdit({ route }) {
         />
       </View>
 
-      {/* Daily Toggle */}
+      {/* ---------- Daily Toggle ---------- */}
       <View style={styles.toggleWrapper}>
         <Switch value={dailyMode} onValueChange={handleToggleDaily} thumbColor="#70C1FF" />
         <Text style={styles.toggleLabel}>daily</Text>
       </View>
 
-      {/* Day Selector */}
+      {/* ---------- Day Selector ---------- */}
       {dailyMode && (
         <View style={styles.daysRow}>
           {['MON','TUES','WED','THR','FRI','SAT','SUN'].map(day => (
