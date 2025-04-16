@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     paddingBottom: Dimensions.get('window').height * 0.12,
   },
   logo: {
-    fontSize: 52,
+    fontSize: 96,
     fontWeight: '600',
     fontFamily: fonts.title,             // Lialune Font 
     color: colors.primaryDeepBlue,       // color of Soluna Logo (Deep Cool Blue)
