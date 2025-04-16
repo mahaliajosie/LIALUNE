@@ -18,6 +18,7 @@ import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 // SCREENS
 import Startup from './pages/Startup';
 import NaviTabs from './navigation/NaviTabs';
+import RoutineEdit from './pages/RoutineEdit';
 
 // Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();
@@ -51,6 +52,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Startup" component={Startup} />
         <Stack.Screen name="Navigation" component={NaviTabs} />
+        <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
       </Stack.Navigator>
     </NavigationContainer>
   );

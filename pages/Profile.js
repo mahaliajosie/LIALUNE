@@ -8,29 +8,31 @@
 
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, Pressable, ScrollView } from 'react-native';
-import * as ImagePicker from 'expo-image-picker'; // Allows user imports from device
+import * as ImagePicker from 'expo-image-picker'; // * Allows user imports from device
+import { useNavigation } from '@react-navigation/native'; 
 // import { Ionicons } from '@expo/vector-icons';
 import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
-// Profile function - the screen users see for their profile page
+// * Profile function - the screen users see for their profile page
 export default function Profile({ navigation }) {
   const [image, setImage] = useState(null);               // users' uploaded image uri is held here OR default
   const [name, setName] = useState('Mahalia');            // default name
   const [editingName, setEditingName] = useState(false);  // edit name toggle - if the name currently being edited
+  const navigation = useNavigation();                     // navigate between each category
 
-  // Function to open image library of a user
+  // * Function to open image library of a user
   const pickImage = async () => {
 
-    // Grabs access to the user's photo library
+    // * Grabs access to the user's photo library
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
         alert('Permission to access photo library is required!');
         return;
       }
 
-    // Opens up the photo library & enables cropping
+    // * Opens up the photo library & enables cropping
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.AssetType.Images,
       allowsEditing: true, // enables cropping
@@ -94,10 +96,10 @@ export default function Profile({ navigation }) {
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })}
             >
                 <View style={styles.icon}>
-                    <FontAwesome5 name="spa" size={20} color="#125DAB" />
+                    <FontAwesome5 name="spa" size={20} color={colors.primaryDeepBlue} />
                 </View>
                 <Text style={styles.menuText}>face</Text>
-                <Ionicons name="chevron-forward" size={20} color="#0068B8" /> 
+                <Ionicons name="chevron-forward" size={20} color={colors.primaryDeepBlue} /> 
             </Pressable>
             {/* ////// HAIR ////// */}
             <Pressable 
