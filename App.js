@@ -9,6 +9,7 @@
 import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
 import { Gantari_500Medium } from '@expo-google-fonts/gantari';
@@ -48,12 +49,14 @@ export default function App() {
   // - 'Stack.Navigator' = sets up a stack navigation sturcture & 'headerShown: false' = hides default navigation bar at the top
   // - 'Stack.Screen' = defines the screens in the app 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Startup" component={Startup} />
-        <Stack.Screen name="Navigation" component={NaviTabs} />
-        <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Startup" component={Startup} />
+          <Stack.Screen name="Navigation" component={NaviTabs} />
+          <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }

@@ -92,8 +92,18 @@ export default function Profile() {
         >
             {/* --------------------------------------------------------- */}
             {/* ---------------------- Routine Sections ---------------------- */}
-            {/* ////// FACE ////// */}
+            
             <ProfileOption label="face" icon="happy-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })} />
+            <ProfileOption label="hair" icon="cut-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Hair' })} />
+            <ProfileOption label="body" icon="body-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Body' })} />
+            <ProfileOption label="nails" icon="finger-print-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Nails' })} />
+
+            <View style={styles.divider} />
+
+            <ProfileOption label="favorites" icon="heart-outline" onPress={() => {}} />
+            <ProfileOption label="color" icon="color-palette-outline" onPress={() => {}} />
+
+            {/* ////// FACE ////// */}
             {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })}
@@ -105,7 +115,7 @@ export default function Profile() {
                 <Ionicons name="chevron-forward" size={20} color={colors.primaryDeepBlue} /> 
             </Pressable> */}
             {/* ////// HAIR ////// */}
-            <Pressable 
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Hair' })}
             >
@@ -114,9 +124,9 @@ export default function Profile() {
                 </View>
                 <Text style={styles.menuText}>hair</Text>
                 <Ionicons name="chevron-forward" size={20} color="#CCCCCC" />
-            </Pressable>
+            </Pressable> */}
             {/* ////// BODY ////// */}
-            <Pressable 
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Body' })}
             >
@@ -125,9 +135,9 @@ export default function Profile() {
                 </View>
                 <Text style={styles.menuText}>body</Text>
                 <Ionicons name="chevron-forward" size={20} color="#CCCCCC" />
-            </Pressable>
+            </Pressable> */}
             {/* ////// NAILS ////// */}
-            <Pressable 
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Nails' })}
             >
@@ -136,13 +146,13 @@ export default function Profile() {
                 </View>
                 <Text style={styles.menuText}>nails</Text>
                 <Ionicons name="chevron-forward" size={20} color="#CCCCCC" />
-            </Pressable>
+            </Pressable> */}
 
             {/* * * * Category Divider * * * */}
-            <View style={styles.divider} /> 
+            {/* <View style={styles.divider} />  */}
 
             {/* ////// FAVS ////// */}
-            <Pressable 
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('Favorites')}
             >
@@ -151,9 +161,9 @@ export default function Profile() {
                 </View>
                 <Text style={styles.menuText}>favorites</Text>
                 <Ionicons name="chevron-forward" size={20} color="#CCCCCC" />
-            </Pressable>
+            </Pressable> */}
             {/* ////// COLOR ////// */}
-            <Pressable 
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('ColorThemes')}
             >
@@ -162,7 +172,7 @@ export default function Profile() {
                 </View>
                 <Text style={styles.menuText}>color</Text>
                 <Ionicons name="chevron-forward" size={20} color="#CCCCCC" />
-            </Pressable>
+            </Pressable> */}
             {/* -------------------------------------------------------------- */}   
             </ScrollView>
             </View>
