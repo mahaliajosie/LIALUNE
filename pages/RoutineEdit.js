@@ -1,24 +1,48 @@
-// =================================================================
-// ====================== Routine Edit Screen ======================
-// =================================================================
-// - Displays a full routine of all products for each menu category
-// - Displays a search bar for finding products
-// - Toggles between daily mode
-// -----------------------------------------------------------------
+// =====================================================
+// ================ Routine Edit Screen ================
+// =====================================================
+// - Manages and groups Routine Items & Rows components 
+// - Passes prompts back to components
+// - Navigation between components
+// -----------------------------------------------------
 
 import React, { useState, useCallback } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, ScrollView, Switch } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import routineData from '../data/routineData';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
+// Components
+import RoutineRows from '../components/RoutineRows';
+import RoutineItems from '../components/RoutineItems';
+// import routineData from '../data/routineData';
+
+// Intial test data, will be replaced by routineData.js 
+const testData = [
+    { id: '1', title: 'Oil Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/Dizajn_bez_naslova__2_s-removebg-preview.png?fit=500%2C500&ssl=1', step: 1 }, 
+    { id: '2', title: 'Hydrating Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/13-1.png?fit=500%2C500&ssl=1', step: 2 }, 
+    { id: '3', title: 'Toner', brands: 'Anua', image: 'https://asianbeautyessentials.com/cdn/shop/files/ANUA77TONER1_5fc7ec57-1447-4883-b0ce-70905ea60573_1024x.png?v=1740704275', step: 3 }, 
+]
+
+// Routine Edit Function
 export default function RoutineEdit({ route }) {
   const { category } = route.params;
-  const [dailyMode, setDailyMode] = useState(false);
-  const [selectedDay, setSelectedDay] = useState('MON');
   const [searchQuery, setSearchQuery] = useState('');
-  const [routine, setRoutine] = useState(routineData[category][selectedDay]);
+  const [dailyMode, setDailyMode] = useState(false);
+//   const [selectedDay, setSelectedDay] = useState('MON');
+  const [selectedDay, setSelectedDay] = useState(0); // Monday = 0
+//   const [routine, setRoutine] = useState(routineData[category][selectedDay]);
+  const [routine, setRoutine] = useState({
+    MON: [...testData],
+    TUES: [],
+    WED: [],
+    THR: [],
+    FRI: [],
+    SAT: [],
+    SUN: [],
+  });
 
   const handleToggleDaily = () => {
     setDailyMode(prev => !prev);
@@ -39,7 +63,7 @@ export default function RoutineEdit({ route }) {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Ionicons name="arrow-back" size={24} color="white" />
+        <Ionicons name="arrow-back" size={24} color={colors.lightCream} />
         <Text style={styles.title}>{category}</Text>
         <View style={{ width: 24 }} />
       </View>

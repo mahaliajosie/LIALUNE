@@ -13,7 +13,8 @@ export default {
     accent: '#F8E1DB',               // Coral accent
     white: '#FFFFFF',
     black: '#000000',
-  
+    lightCream: '#FBF8F4',
+
     // Additional Themes
     themes: {
       greenTea: {
