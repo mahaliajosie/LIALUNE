@@ -15,10 +15,10 @@ import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
-import ProfileOption from '..components/ProfileOption';
+import ProfileOption from '../components/ProfileOption';
 
 // * Profile function - the screen users see for their profile page
-export default function Profile({ navigation }) {
+export default function Profile() {
   const [image, setImage] = useState(null);               // users' uploaded image uri is held here OR default
   const [name, setName] = useState('Mahalia');            // default name
   const [editingName, setEditingName] = useState(false);  // edit name toggle - if the name currently being edited
@@ -92,10 +92,9 @@ export default function Profile({ navigation }) {
         >
             {/* --------------------------------------------------------- */}
             {/* ---------------------- Routine Sections ---------------------- */}
-
-            <ProfileOption label="face" icon="happy-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })} />
             {/* ////// FACE ////// */}
-            <Pressable 
+            <ProfileOption label="face" icon="happy-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })} />
+            {/* <Pressable 
                 style={styles.menuRow} 
                 onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })}
             >
@@ -104,7 +103,7 @@ export default function Profile({ navigation }) {
                 </View>
                 <Text style={styles.menuText}>face</Text>
                 <Ionicons name="chevron-forward" size={20} color={colors.primaryDeepBlue} /> 
-            </Pressable>
+            </Pressable> */}
             {/* ////// HAIR ////// */}
             <Pressable 
                 style={styles.menuRow} 
@@ -198,14 +197,13 @@ const styles = StyleSheet.create({
         // marginTop: 25,
       },
     editIcon: {
-    position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
-    bottom: 5, 
-    right: 5,
-    backgroundColor: colors.mainLialune, // Deep Sky Blue (Lialune Blue)
-    borderRadius: 20, // small circlular badge
-    padding: 5,
+        position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
+        bottom: 5, 
+        right: 5,
+        backgroundColor: colors.mainLialune, // Deep Sky Blue (Lialune Blue)
+        borderRadius: 20, // small circlular badge
+        padding: 5,
     },
-  
     nameText: {
         fontSize: 42,
         marginTop: 18, // space between name & profile picture
@@ -238,22 +236,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 48,   // side padding for all scroll container
         paddingBottom: 50,       // bottom padding so last items aren't cut off
-    },
-    menuRow: {
-        flexDirection: 'row', // makes row horizontal
-        alignItems: 'center',
-        paddingVertical: 25,
-        borderBottomColor: '#EEE', // light gray line under each item
-        borderBottomWidth: 1,
-    },
-    icon: {
-        marginRight: 12, // add space between icon & label
-    },
-    menuText: {
-        flex: 1,          // take up remaining space so arrow is pushed to far right
-        fontSize: 18,
-        color: colors.primaryDeepBlue, // Deep Blue for each category/Option
-        fontFamily: fonts.body,
     },
     divider: {
         height: 4,                                  // thicker line

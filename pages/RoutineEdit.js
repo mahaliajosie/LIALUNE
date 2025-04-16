@@ -10,7 +10,7 @@
 // import { View, Text, Pressable, StyleSheet, ScrollView, Switch } from 'react-native';
 // import { useFocusEffect } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';

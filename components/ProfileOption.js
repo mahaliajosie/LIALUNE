@@ -13,27 +13,28 @@ import fonts from '../constants/fonts';
 export default function ProfileOption({ label, icon, onPress }) {
   return (
     <Pressable style={styles.optionRow} onPress={onPress}>
-      <Ionicons name={icon} size={20} color="#125DAB" style={styles.optionIcon} />
+      <Ionicons name={icon} size={20} color="#CCCCCC" style={styles.optionIcon} />
       <Text style={styles.optionText}>{label}</Text>
-      <Ionicons name="chevron-forward" size={20} color="#125DAB" style={{ marginLeft: 'auto' }} />
+      <Ionicons name="chevron-forward" size={20} color="#CCCCCC" style={{ marginLeft: 'auto' }} />
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  optionRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 25,
-    width: '100%',
-    paddingHorizontal: 20,
-  },
-  optionIcon: {
-    marginRight: 12,
-  },
-  optionText: {
-    fontSize: 18,
-    color: colors.primaryDeepBlue,
-    fontFamily: fonts.body,
-  },
+    optionRow: {
+        flexDirection: 'row', // makes row horizontal
+        alignItems: 'center',
+        paddingVertical: 25,
+        borderBottomColor: '#EEE', // light gray line under each item
+        borderBottomWidth: 1,
+    },
+    optionIcon: {
+        marginRight: 12, // add space between icon & label
+    },
+    optionText: {
+        flex: 1,          // take up remaining space so arrow is pushed to far right
+        fontSize: 18,
+        color: colors.primaryDeepBlue, // Deep Blue for each category/Option
+        fontFamily: fonts.body,
+    },
 });
