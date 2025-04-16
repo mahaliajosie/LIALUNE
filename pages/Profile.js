@@ -15,6 +15,8 @@ import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
+import ProfileOption from '..components/ProfileOption';
+
 // * Profile function - the screen users see for their profile page
 export default function Profile({ navigation }) {
   const [image, setImage] = useState(null);               // users' uploaded image uri is held here OR default
@@ -90,6 +92,8 @@ export default function Profile({ navigation }) {
         >
             {/* --------------------------------------------------------- */}
             {/* ---------------------- Routine Sections ---------------------- */}
+
+            <ProfileOption label="face" icon="happy-outline" onPress={() => navigation.navigate('RoutineEdit', { category: 'Face' })} />
             {/* ////// FACE ////// */}
             <Pressable 
                 style={styles.menuRow} 
@@ -193,14 +197,14 @@ const styles = StyleSheet.create({
         borderColor: colors.backgroundCream, // Light Cream Border
         // marginTop: 25,
       },
-      editIcon: {
-        position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
-        bottom: 5, 
-        right: 5,
-        backgroundColor: colors.mainLialune, // Deep Sky Blue (Lialune Blue)
-        borderRadius: 20, // small circlular badge
-        padding: 5,
-      },
+    editIcon: {
+    position: 'absolute', // icon on top of Profile pic & anchored to the bottom-right
+    bottom: 5, 
+    right: 5,
+    backgroundColor: colors.mainLialune, // Deep Sky Blue (Lialune Blue)
+    borderRadius: 20, // small circlular badge
+    padding: 5,
+    },
   
     nameText: {
         fontSize: 42,
