@@ -19,6 +19,8 @@ import fonts from '../constants/fonts';
 import RoutineRow from '../components/RoutineRow';
 import RoutineItem from '../components/RoutineItem';
 // import routineData from '../data/routineData';
+import productData from '../data/productData';
+
 
 // * Intial test data, will be replaced by routineData.js 
 const testData = [
@@ -36,7 +38,7 @@ export default function RoutineEdit({ route }) {
   const navigation = useNavigation(); 
 
   const [routine, setRoutine] = useState({
-    MON: [...testData],
+    MON: [...productData],
     TUES: [],
     WED: [],
     THR: [],

@@ -1,10 +1,10 @@
-// ===========================================
-// ========== ProductContext.js ==============
-// ===========================================
+// =====================================================
+// =============== ProductContext.js ===================
+// =====================================================
 // - Global state for managing product data
 // - Stores: user favorites, ratings, and custom images
 // - Can be accessed anywhere in the app
-// -------------------------------------------
+// -----------------------------------------------------
 
 import React, { createContext, useState, useContext } from 'react';
 

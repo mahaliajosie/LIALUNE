@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import productData from '../data/productData'; // Product Source/Database
+import productData from '../data/productData'; // SAMPLEProduct Source/Database
 
 
 export default function ProductSearch({ route }) {
@@ -73,7 +73,13 @@ export default function ProductSearch({ route }) {
         )}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
-    </View>
+    {/* ---------- Status Bar ---------- */}
+    <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"  // or 'dark-content' depending on background
+    /> 
+    </View> 
   );
 }
 
