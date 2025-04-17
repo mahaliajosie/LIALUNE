@@ -14,8 +14,6 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
-import ProductSearch from '../pages/ProductSearch';
-
 export default function RoutineRow({
   search,
   setSearch,
@@ -31,18 +29,17 @@ export default function RoutineRow({
   return (
     <View style={styles.wrapper}>
       {/* ------ Search ------ */}
-      <Pressable onPress={() => navigation.navigate('ProductSearch')}>
-        <Text style={styles.searchInput}></Text>
+      <Pressable onPress={() => navigation.navigate('ProductSearch')} style={styles.searchContainer}>
+           <TextInput
+            placeholder="+ add" // shown when nothing is typed
+            value={search}
+            onChangeText={setSearch}
+            placeholderTextColor={colors.mainLialune}
+            // style={styles.searchInput}
+            editable={false} // Prevents Keyboard from opening
+            pointerEvents='none' // Allows Pressable to capture touch
+          />
       </Pressable>
-        {/* // <View style={styles.searchContainer}>
-        //   <TextInput
-        //     placeholder="+ add" // shown when nothing is typed
-        //     value={search}
-        //     onChangeText={setSearch}
-        //     placeholderTextColor={colors.mainLialune}
-        //     style={styles.searchInput}
-        //   />
-        // </View> */}
 
       {/* ------ Toggle ------ */}
       <View style={styles.toggleRow}>
