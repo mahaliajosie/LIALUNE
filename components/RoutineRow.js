@@ -78,11 +78,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkCream,
     borderRadius: 10,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: 12,
+    marginTop: 60,
   },
   searchInput: {
     fontSize: 16,
-    color: '#125DAB',        // Search Input Color = ? 
+    color: colors.primaryDeepBlue,      
     fontFamily: fonts.body,
   },
   toggleRow: {
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 14,
+    top: 8,
   },
   toggleLabel: {    // --- DAILY text ---
     fontSize: 20,
@@ -103,14 +105,13 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   dayText: {
-    fontSize: 14,
+    fontSize: 18,
     fontFamily: fonts.title,
-    color: colors.accent,
+    color: colors.primaryDeepBlue,
     paddingHorizontal: 6,
     paddingVertical: 4,
   },
   activeDayText: {
-    // fontSize: 14,
     fontFamily: fonts.title,
     textDecorationLine: 'underline',
     color: colors.mainLialune,

@@ -5,7 +5,7 @@
 // -----------------------------------------------------
 
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Text, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';

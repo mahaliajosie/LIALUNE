@@ -17,7 +17,7 @@ export default function RoutineItem({ item, drag, isActive, index }) {
     <Pressable
       style={[
         styles.itemContainer,
-        isActive && { backgroundColor: colors.textSecondary }
+        isActive && { backgroundColor: colors.accent }
       ]}
       onLongPress={drag}
     >

@@ -7,8 +7,9 @@
 // -----------------------------------------------------
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
@@ -16,6 +17,7 @@ import fonts from '../constants/fonts';
 // ---------- Components ----------
 import RoutineRow from '../components/RoutineRow';
 import RoutineItem from '../components/RoutineItem';
+import { Pressable } from 'react-native-gesture-handler';
 // import routineData from '../data/routineData';
 
 // * Intial test data, will be replaced by routineData.js 
@@ -31,6 +33,7 @@ export default function RoutineEdit({ route }) {
   const [search, setSearch] = useState('');             // * Holds value in search bar
   const [dailyMode, setDailyMode] = useState(false);    // * True = one routine for all days, False = unique routines for each day
   const [selectedDay, setSelectedDay] = useState(0);    // * Monday = 0, & Sunday = 6
+  const navigation = useNavigation(); 
 
   const [routine, setRoutine] = useState({
     MON: [...testData],
@@ -61,9 +64,11 @@ export default function RoutineEdit({ route }) {
     <View style={styles.container}>
       {/* ---------- Header ---------- */}
       <View style={styles.header}>
-        <Ionicons name="chevron-back" size={45} color={colors.lightCream} />
+        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
+        </Pressable>
         <Text style={styles.title}>{category}</Text>
-        <View style={{ width: 24 }} /> {/* Spacing on right of Category for symmentry */}
+        <View style={{ width: 0 }} /> {/* Spacing on right of Category for symmentry */}
       </View>
 
       {/* ---------- Search Bar & Daily Toggle ---------- */}
@@ -84,11 +89,20 @@ export default function RoutineEdit({ route }) {
           
           // * Handle each item & drag between steps
           renderItem={({ item, drag, isActive, index }) => (
-            <RoutineItem item={item} drag={drag} isActive={isActive} index={index} />
+            <RoutineItem 
+                item={item} 
+                drag={drag} 
+                isActive={isActive} 
+                index={index} />
           )}
           
           // * Spacing so last item is not cut off at the bottom
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100 }} 
+        />
+        <StatusBar
+            translucent
+            backgroundColor="transparent"
+            barStyle="light-content"  // or 'dark-content' depending on background
         />
     </View>
   );
@@ -98,18 +112,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.lightCream,
-    paddingTop: 50,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 80 : 120,
   },
   header: {
     flexDirection: 'row',
-    backgroundColor: colors.mainLialune,
+    width: '100%',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 15,
+    justifyContent: 'center',
+    position: 'absolute',
+    backgroundColor: colors.mainLialune,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 70,
+    paddingHorizontal: 15,
+    paddingBottom: 20,
+    top: 0,
+    zIndex: 10,
   },
   title: {
     fontSize: 64,
     fontFamily: fonts.title,
     color: colors.lightCream,
+    // alignItems: 'center',
   },
+  backButton: {
+    position: 'absolute',
+    top: 80,
+    left: 12,
+    right: 20,
+    zIndex: 2,
+  }
 });
