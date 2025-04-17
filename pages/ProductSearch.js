@@ -45,10 +45,10 @@ export default function ProductSearch({ route }) {
 
   return (
     <View style={styles.container}>
-      {/* --------- Back Arrow + Search Bar --------- */}
+      {/* --------- Back Arrow & Search Bar --------- */}
       <View style={styles.searchWrapper}>
         <Pressable onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={30} color={colors.lialuneBlue} />
+          <Ionicons name="arrow-back" size={30} color={colors.mainLialune} />
         </Pressable>
         <TextInput
           style={styles.searchInput}

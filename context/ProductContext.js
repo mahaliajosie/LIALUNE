@@ -8,16 +8,16 @@
 
 import React, { createContext, useState, useContext } from 'react';
 
-// Create the context
+// * Create the context to manage product state throughout
 const ProductContext = createContext();
 
-// Context provider to wrap the app and provide access
+// * Wrap the app and provide access for Ratings, Favorties, & Custom Images
 export const ProductProvider = ({ children }) => {
   const [favorites, setFavorites] = useState({});
   const [ratings, setRatings] = useState({});
   const [customImages, setCustomImages] = useState({});
 
-  // Toggle favorite status
+  // * Toggle favorite status
   const toggleFavorite = (productId) => {
     setFavorites((prev) => ({
       ...prev,
@@ -25,7 +25,7 @@ export const ProductProvider = ({ children }) => {
     }));
   };
 
-  // Set rating (supports half stars like 3.5, 4.0, etc.)
+  // * Set rating (supports half stars like 3.5, 4.0, etc.)
   const setRating = (productId, value) => {
     setRatings((prev) => ({
       ...prev,
@@ -33,7 +33,7 @@ export const ProductProvider = ({ children }) => {
     }));
   };
 
-  // Set a custom image
+  // * Set a custom image (optional)
   const setCustomImage = (productId, uri) => {
     setCustomImages((prev) => ({
       ...prev,
@@ -57,5 +57,5 @@ export const ProductProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use this context
+// Custom hook to use anywhere to read/update the product's state
 export const useProductContext = () => useContext(ProductContext);

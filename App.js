@@ -20,6 +20,7 @@ import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 import Startup from './pages/Startup';
 import NaviTabs from './navigation/NaviTabs';
 import RoutineEdit from './pages/RoutineEdit';
+import { ProductProvider } from './context/ProductContext'; 
 
 // Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();
@@ -50,13 +51,15 @@ export default function App() {
   // - 'Stack.Screen' = defines the screens in the app 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Startup" component={Startup} />
-          <Stack.Screen name="Navigation" component={NaviTabs} />
-          <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ProductProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Startup" component={Startup} />
+            <Stack.Screen name="Navigation" component={NaviTabs} />
+            <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ProductProvider>
     </GestureHandlerRootView>
   );
 }

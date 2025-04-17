@@ -3,6 +3,7 @@
 
 export default {
     backgroundLight: '#D6EDFF',      // Light Blue background
+    backgroundBlue: '#E6F0F6',       // Light Blue background for Product Search
     backgroundCream: '#EADDCA',      // Light Cream
     bottomKhaki: '#E2D0B6',          // Dark Khaki for botttom Navi bar
     primaryDeepBlue: '#0068B8',      // Deep Blue (Headings/Buttons)
@@ -15,6 +16,7 @@ export default {
     black: '#000000',
     lightCream: '#FBF8F4',
     darkCream: '#F0EDE6',
+    slightDarkerCream: '#F1E8DB',    // Used for Add Product's search bar
 
     // Additional Themes
     themes: {
