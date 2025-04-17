@@ -29,7 +29,7 @@ const testData = [
 
 // ---------- Routine Edit Function ----------
 export default function RoutineEdit({ route }) {
-  const { category } = route.params;                    // * Retrieves the selected category from navigation (Hair, Face, etc.)
+  const category = route?.params?.category ?? 'Routine';  // * Retrieves the selected category from navigation (Hair, Face, etc.)
   const [search, setSearch] = useState('');             // * Holds value in search bar
   const [dailyMode, setDailyMode] = useState(false);    // * True = one routine for all days, False = unique routines for each day
   const [selectedDay, setSelectedDay] = useState(0);    // * Monday = 0, & Sunday = 6
@@ -90,12 +90,13 @@ export default function RoutineEdit({ route }) {
           // * Handle each item & drag between steps
           renderItem={({ item, drag, isActive, index }) => (
             <RoutineItem 
-                item={item} 
-                drag={drag} 
-                isActive={isActive} 
-                index={index} />
+              item={item} 
+              drag={drag} 
+              isActive={isActive} 
+              index={index} 
+            />
           )}
-          
+
           // * Spacing so last item is not cut off at the bottom
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100 }} 
         />

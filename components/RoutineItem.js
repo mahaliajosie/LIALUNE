@@ -12,6 +12,7 @@ import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 
 export default function RoutineItem({ item, drag, isActive, index }) {
+  // console.log('Index in RoutineItem:', index);
   return (
     // Drag Item function with Long Press
     <Pressable
@@ -22,7 +23,8 @@ export default function RoutineItem({ item, drag, isActive, index }) {
       onLongPress={drag}
     >
         {/* ------- Step Number ------- */}
-      <Text style={styles.stepText}>{`Step ${index + 1}:`}</Text>
+      {/* <Text style={styles.stepText}>{`Step ${index + 1}:`}</Text> */}
+      <Text style={styles.stepText}>{`Step ${item.step}:`}</Text>
         
         {/* ------- Product Image - Rounded Square style ------- */}
       <Image
