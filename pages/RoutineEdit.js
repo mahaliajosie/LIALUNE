@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
@@ -17,7 +18,6 @@ import fonts from '../constants/fonts';
 // ---------- Components ----------
 import RoutineRow from '../components/RoutineRow';
 import RoutineItem from '../components/RoutineItem';
-import { Pressable } from 'react-native-gesture-handler';
 // import routineData from '../data/routineData';
 
 // * Intial test data, will be replaced by routineData.js 
