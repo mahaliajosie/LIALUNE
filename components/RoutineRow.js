@@ -76,8 +76,11 @@ export default function RoutineRow({
 
 const styles = StyleSheet.create({
   wrapper: {
+    // paddingHorizontal: 20,
+    // marginBottom: 20,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    paddingTop: Platform.OS === 'android' ? 20 : 30,
+    backgroundColor: colors.lightCream,
   },
   searchContainer: {
     backgroundColor: colors.darkCream,
