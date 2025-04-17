@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import productData from '../data/productData'; // SAMPLEProduct Source/Database
+import productData from '../data/productData'; // SAMPLE Product Source/Database
 
 
 export default function ProductSearch({ route }) {

@@ -20,6 +20,7 @@ import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 import Startup from './pages/Startup';
 import NaviTabs from './navigation/NaviTabs';
 import RoutineEdit from './pages/RoutineEdit';
+import ProductSearch from './pages/ProductSearch';
 import { ProductProvider } from './context/ProductContext'; 
 
 // Create stack objects, to define screen transitions
@@ -57,6 +58,7 @@ export default function App() {
             <Stack.Screen name="Startup" component={Startup} />
             <Stack.Screen name="Navigation" component={NaviTabs} />
             <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
+            <Stack.Screen name="ProductSearch" component={ProductSearch} />
           </Stack.Navigator>
         </NavigationContainer>
       </ProductProvider>

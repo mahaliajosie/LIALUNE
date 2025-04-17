@@ -10,8 +10,11 @@
 // ------------------------------------------------------------
 import React from 'react';
 import { View, Text, TextInput, Switch, Pressable, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
+
+import ProductSearch from '../pages/ProductSearch';
 
 export default function RoutineRow({
   search,
@@ -23,18 +26,23 @@ export default function RoutineRow({
 }) {
   const days = ['MON', 'TUES', 'WED', 'THR', 'FRI', 'SAT', 'SUN'];
 
+  const navigation = useNavigation(); 
+
   return (
     <View style={styles.wrapper}>
       {/* ------ Search ------ */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          placeholder="+ add" // shown when nothing is typed
-          value={search}
-          onChangeText={setSearch}
-          placeholderTextColor={colors.mainLialune}
-          style={styles.searchInput}
-        />
-      </View>
+      <Pressable onPress={() => navigation.navigate('ProductSearch')}>
+        <Text style={styles.searchInput}></Text>
+      </Pressable>
+        {/* // <View style={styles.searchContainer}>
+        //   <TextInput
+        //     placeholder="+ add" // shown when nothing is typed
+        //     value={search}
+        //     onChangeText={setSearch}
+        //     placeholderTextColor={colors.mainLialune}
+        //     style={styles.searchInput}
+        //   />
+        // </View> */}
 
       {/* ------ Toggle ------ */}
       <View style={styles.toggleRow}>
