@@ -13,8 +13,8 @@ import { View,
     KeyboardAvoidingView, 
     Platform } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+// import { Ionicons } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 import FoundProducts from '../components/FoundProducts';    // Product Search Results
@@ -47,8 +47,9 @@ export default function Search({navigation}) {
       {/* --------- Header with Search Bar & Back Button --------- */}
       <View style={styles.searchContainer}>
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={28} color={colors.primaryDeepBlue} />
+          {/* <Ionicons name="arrow-back" size={28} color={colors.primaryDeepBlue} /> */}
           {/* <FontAwesomeIcon icon="fa-solid fa-circle-chevron-left" size={28} color={colors.primaryDeepBlue} /> */}
+          <FontAwesomeIcon icon="fa-solid fa-circle-left" size={28} color={colors.primaryDeepBlue} />
         </Pressable>
         <TextInput
           style={styles.inputSearchText} 
