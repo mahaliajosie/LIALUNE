@@ -7,10 +7,10 @@
 // ------------------------------------------------
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from './constants/colors';
+import fonts from './constants/fonts';
 
-const FoundProducts = ({ results, query, navigation }) {
+const FoundProducts = ({ results, query, navigation }) => {
     // - Display top 5 relevant results
     const displayFive = results.slice(0, 5);
 
