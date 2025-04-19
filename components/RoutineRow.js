@@ -9,7 +9,7 @@
 // - Renders the products: image, name, brand & step
 // ------------------------------------------------------------
 import React from 'react';
-import { View, Text, TextInput, Switch, Pressable, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Switch, Pressable, StyleSheet, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';

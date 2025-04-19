@@ -1,135 +1,121 @@
-// =======================================================
-// ================ Product Search Screen ================
-// =======================================================
-// - User driven search field 
-// - Bold match product name
-// - Adding to direct to Product Page
-// -------------------------------------------------------
+// =============================================
+// ============== Product Search ==============
+// =============================================
+// - Lets users search for products
+// - Back button returns to previous screen
+// - [ \\Displays search results matching user input\\ ]
+// ---------------------------------------------
+
 import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, Pressable, Image, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, TextInput, StyleSheet, Text, FlatList, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+// import { useNavigation } from '@react-navigation/native';
 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import productData from '../data/productData'; // SAMPLE Product Source/Database
+import FoundProducts from '.pages/FoundProducts'; // Product Search Results
+import productData from '../data/productData'; // SAMPLE product array
 
+export default function ProductSearch({navigation}) {
+//   const navigation = useNavigation();
+  const [query, setQuery] = useState('');
 
-export default function ProductSearch({ route }) {
-  const [search, setSearch] = useState('');
-  const navigation = useNavigation();
+  // Filters Results by top 5 most relevant
+  const filteredResults = query ? 
+    productData.filter(product =>
+        `${product.brand} ${product.name}`.toLowerCase()
+        .includes(query.toLowerCase())
+    ).slice(0, 5)
+    : [];
 
-  // * Filter & limit results to top 5 most relevant
-  const filteredResults = productData
-    .filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    )
-    .slice(0, 5);
-
-  // * Splits product name and bold the word that matches the product
-  const highlightMatch = (text, query) => {
-    const parts = text.split(new RegExp(`(${query})`, 'gi'));
-    return parts.map((part, index) =>
-      part.toLowerCase() === query.toLowerCase() ? (
-        <Text key={index} style={styles.bold}>{part}</Text>
-      ) : (
-        <Text key={index}>{part}</Text>
-      )
-    );
-  };
-
-  // * will need to change to direct to Product Page
-  const handleSelect = (product) => {
-    navigation.navigate('RoutineEdit', { selectedProduct: product });
-  };
+//   const filteredProducts = productData.filter(product =>
+//     product.name.toLowerCase().includes(query.toLowerCase())
+//   ).slice(0, 5); // top 5 results only
 
   return (
     <View style={styles.container}>
-      {/* --------- Back Arrow & Search Bar --------- */}
-      <View style={styles.searchWrapper}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={30} color={colors.mainLialune} />
+      {/* --------- Header with Search Bar & Back Buttone --------- */}
+      <View style={styles.searchContainer}>
+        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={28} color={colors.primaryDeepBlue} />
         </Pressable>
         <TextInput
-          style={styles.searchInput}
-          value={search}
-          onChangeText={setSearch}
-          placeholder="Search products"
-          placeholderTextColor="#AAA"
+          style={styles.inputSearchText} 
+          placeholder="Find your product!"
+          placeholderTextColor={colors.lightCream}
+          value={query}
+          onChangeText={setQuery}
         />
       </View>
 
-      {/* --------- Results --------- */}
-      <FlatList
-        data={filteredResults}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Pressable style={styles.resultItem} onPress={() => handleSelect(item)}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.resultText}>
-              {highlightMatch(item.name, search)}
-            </Text>
-          </Pressable>
-        )}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
-      />
-    {/* ---------- Status Bar ---------- */}
-    <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="light-content"  // or 'dark-content' depending on background
-    /> 
-    </View> 
-  );
+      {/* --------- Condtional Results --------- */}
+      {query !== '' && <FoundProducts result={filteredResults} query={query} />}
+
+    </View>
+    );
 }
 
+    //   {/* --------- Matching Results --------- */}
+    //   {/* <FlatList
+    //     data={filteredProducts}
+    //     keyExtractor={(item) => item.id}
+    //     renderItem={({ item }) => (
+    //       <Pressable style={styles.resultRow}>
+    //         {item.image && <Image source={{ uri: item.image }} style={styles.productImage} />}
+    //         <Text style={styles.resultText}>{item.name}</Text>
+    //       </Pressable>
+    //     )}
+    //     contentContainerStyle={styles.resultsContainer}
+    //   />  */}
+
+
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: colors.backgroundBlue,
-      paddingTop: 60,
-      paddingHorizontal: 20,
-    },
-    searchWrapper: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: colors.lightCream,
-      paddingHorizontal: 15,
-      borderRadius: 30,
-      marginBottom: 20,
-    },
-    searchInput: {
-      flex: 1,
-      paddingVertical: 12,
-      fontSize: 16,
-      color: '#333',
-      fontFamily: fonts.body,
-      marginLeft: 10,
-    },
-    resultItem: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingVertical: 15,
-    },
-    image: {
-      width: 36,
-      height: 36,
-      marginRight: 10,
-      borderRadius: 4,
-    },
-    resultText: {
-      fontSize: 15,
-      color: '#003366',
-      fontFamily: fonts.body,
-    },
-    bold: {
-      fontWeight: 'bold',
-      fontFamily: fonts.body,
-      color: '#003366',
-    },
-    separator: {
-      height: 1,
-      backgroundColor: '#ddd',
-      marginVertical: 4,
-    },
-  });
+  container: {
+    flex: 1,
+    backgroundColor: colors.backgroundBlue,
+    paddingHorizontal: 16,
+    paddingTop: 80,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.slightDarkerCream,
+    // margin: 20,
+    borderRadius: 30,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    height:50,
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  inputSearchText: {
+    flex: 1,
+    fontSize: 16,
+    fontFamily: fonts.body,
+    color: colors.primaryDeepBlue,
+    marginLeft: 16,
+  },
+//   resultsContainer: {
+//     paddingHorizontal: 20,
+//     paddingTop: 10,
+//   },
+//   resultRow: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     paddingVertical: 15,
+//     borderBottomColor: colors.cream,
+//     borderBottomWidth: 1,
+//   },
+//   productImage: {
+//     width: 30,
+//     height: 30,
+//     marginRight: 12,
+//     borderRadius: 5,
+//   },
+//   resultText: {
+//     fontFamily: fonts.body,
+//     fontSize: 16,
+//     color: colors.primary,
+//   },
+});
