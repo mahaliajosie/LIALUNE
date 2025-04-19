@@ -55,20 +55,6 @@ export default function ProductSearch({navigation}) {
     );
 }
 
-    //   {/* --------- Matching Results --------- */}
-    //   {/* <FlatList
-    //     data={filteredProducts}
-    //     keyExtractor={(item) => item.id}
-    //     renderItem={({ item }) => (
-    //       <Pressable style={styles.resultRow}>
-    //         {item.image && <Image source={{ uri: item.image }} style={styles.productImage} />}
-    //         <Text style={styles.resultText}>{item.name}</Text>
-    //       </Pressable>
-    //     )}
-    //     contentContainerStyle={styles.resultsContainer}
-    //   />  */}
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -96,26 +82,4 @@ const styles = StyleSheet.create({
     color: colors.primaryDeepBlue,
     marginLeft: 16,
   },
-//   resultsContainer: {
-//     paddingHorizontal: 20,
-//     paddingTop: 10,
-//   },
-//   resultRow: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     paddingVertical: 15,
-//     borderBottomColor: colors.cream,
-//     borderBottomWidth: 1,
-//   },
-//   productImage: {
-//     width: 30,
-//     height: 30,
-//     marginRight: 12,
-//     borderRadius: 5,
-//   },
-//   resultText: {
-//     fontFamily: fonts.body,
-//     fontSize: 16,
-//     color: colors.primary,
-//   },
 });
