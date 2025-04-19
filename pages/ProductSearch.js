@@ -7,14 +7,14 @@
 // ---------------------------------------------
 
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text, FlatList, Pressable, Image } from 'react-native';
+import { View, TextInput, StyleSheet, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 // import { useNavigation } from '@react-navigation/native';
 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import FoundProducts from '.pages/FoundProducts'; // Product Search Results
-import productData from '../data/productData'; // SAMPLE product array
+import FoundProducts from './components/FoundProducts';  // Product Search Results
+import productData from '../data/productData';      // SAMPLE product array
 
 export default function ProductSearch({navigation}) {
 //   const navigation = useNavigation();
