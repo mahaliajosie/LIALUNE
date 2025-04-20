@@ -6,80 +6,93 @@
 // - On tap, navigates to Product Page
 // ------------------------------------------------
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 import colors from './constants/colors';
 import fonts from './constants/fonts';
+import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
 
 const FoundProducts = ({ results, query, navigation }) => {
-    // - Display top 5 relevant results
-    const displayFive = results.slice(0, 5);
+  const navigation = useNavigation();
 
-    // - Match typed search results
-    const matchHighlight = (text, query) => {
-        if (!query) return text;
+  // - Filter Results based on query
+  const queryLower = query.trim().toLowerCase();
+  const filteredResults = queryLower
+    ? results.filter(prod =>
+        `${prod.brand} ${prod.name}`.toLowerCase().includes(queryLower)
+    )
+    : []; // * if no query, display nothing
 
-        const regex = new RegExp(`(${query})`, 'gi');
-        const parts = text.split(regex);
+  // - Display top 5 relevant results
+  const topResults = filteredResults.slice(0, 5);
 
-        return parts.map((part, index) =>
-            part.toLowerCase() === query.toLowerCase()
-                ? <Text key={index} style={styles.highlightBold}>{part}</Text>
-                : <Text key={index}>{part}</Text> 
-        );
-    };
-    
+  // - Match typed search results
+  const matchHighlight = (product) => {
+    const fullName = `${product.brand} ${product.name}`;
+    if (!queryLower) { return fullName; } // * Don't highlight if empty
+
+    // - Split name (not case sensitive) & save results
+    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+    const parts = fullName.split(regex);
+
     return (
-        <View>
-            {displayFive.map(product => (
-                <TouchableOpacity
-                    key={product.id}
-                    style={styles.resultItem}
-                    onPress={() => {
-                        // - Navigate to Product Page
-                        navigation.navigate('ProductPage', { product: product});
-                    }}
-                >
-                    {/* --- Bold the search result --- */}
-                    <Text style={styles.productName}>
-                        {matchHighlight(product.name, query)}
-                    </Text>
-                    {/* --- Additional Info of Product like: description, where to buy, etc. --- */} 
-                </TouchableOpacity>
-            ))}
-        </View>
+      <Text style={styles.productText} >
+      { parts.map((part, index) => {
+        if (part.toLowerCase() === queryLower) {
+          // - Match query & bold
+          return (
+            <Text key={index} style={styles.boldText} >
+              {part}
+            </Text>
+          );
+        }
+        // - Rest of the query is in regular weight text
+        return <Text key={index}>{part}</Text>;
+      })}
+      </Text>
     );
+  };
+    
+  // - Special Characters
+  const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  };
+  return (
+      <View>
+          {topResults.map(product => (
+              <Pressable
+                  key={product.id}
+                  style={({ pressed }) => [ 
+                    styles.item,
+                    pressed && styles.itemPressed
+                  ]}
+                  onPress={() => {
+                      // - Navigate to Product Page
+                      navigation.navigate('ProductPage', { product});
+                  }}
+              >
+                  {/* --- Product Images --- */}
+                <Image
+                    source={ product.image ? { uri : product.image } : spaPupImg }
+                    defaultSource={spaPupImg}
+                    style={styles.image}
+                />
+                {/* --- Bold the search result --- */}
+                {matchHighlight(product)}
+
+                {/* <View style={styles.separator} /> */} {/* --- optional divider --- */}
+
+                {/* <Text style={styles.productName}>
+                    {matchHighlight(product.name, query)}
+                </Text>  */}
+              </Pressable>
+          ))}
+      </View>
+  );
 };
-//   const boldMatch = (text) => {
-//     const index = text.toLowerCase().indexOf(query.toLowerCase());
-//     if (index === -1) return <Text style={styles.productText}>{text}</Text>;
-
-//     return (
-//       <Text style={styles.productText}>
-//         {text.substring(0, index)}
-//         <Text style={styles.boldMatch}>{text.substring(index, index + query.length)}</Text>
-//         {text.substring(index + query.length)}
-//       </Text>
-//     );
-//   };
-
-//   const renderItem = ({ item }) => (
-//     <View style={styles.resultItem}>
-//       <Image source={{ uri: item.image }} style={styles.image} />
-//       {boldMatch(`${item.brand} ${item.name}`)}
-//     </View>
-//   );
-
-//   return (
-//     <FlatList
-//       data={results}
-//       keyExtractor={(item) => item.id.toString()}
-//       renderItem={renderItem}
-//       contentContainerStyle={{ paddingVertical: 20 }}
-//     />
-//   );
 
 const styles = StyleSheet.create({
-  resultItem: {
+  item: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 18,
@@ -88,22 +101,28 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     marginHorizontal: 4,
   },
-//   image: {
-//     width: 32,
-//     height: 32,
-//     resizeMode: 'contain',
-//     marginRight: 10,
-//   },
-  productName: {
+  imagePressed: {
+    backgroundColor: '#D2E6FF'
+  },
+  image: {
+    width: 32,
+    height: 32,
+    resizeMode: 'contain',
+    marginRight: 10,
+  },
+  productText: {
     fontSize: 16,
     fontFamily: fonts.body,
     color: colors.mainLialune,
     flexShrink: 1,
   },
-  highlightBold: {
+  boldText: {
     fontWeight: 'bold',
     color: colors.primaryDeepBlue,
   },
+  // separator: {
+
+  // },
 });
 
 export default FoundProducts;
