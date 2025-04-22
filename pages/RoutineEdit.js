@@ -73,7 +73,8 @@ export default function RoutineEdit({ route }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.appArea}>
+      <View style={styles.container}>
       {/* ---------- Header ---------- */}
       <View style={styles.header}>
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -119,11 +120,16 @@ export default function RoutineEdit({ route }) {
             backgroundColor="transparent"
             barStyle="light-content"  // or 'dark-content' depending on background
         />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  appArea: {
+    flex: 1,
+    backgroundColor: colors.lightCream,
+  },
   container: {
     flex: 1,
     backgroundColor: colors.lightCream,
@@ -132,18 +138,18 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.mainLialune,
     // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',          // Centered vertically
     justifyContent: 'center',      // Title centered horizontally
     position: 'relative',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     paddingBottom: 10,
   },
   backButton: {
     position: 'absolute',
-    // marginRight: 16,
     left: 20,
-    // top: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    top: '50%',
+    transform: [{ translateY: -29 }],
   },
   titleContainer: {
     alignItems: 'center',
