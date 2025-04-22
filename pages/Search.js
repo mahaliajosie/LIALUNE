@@ -1,9 +1,9 @@
 // =============================================
 // ============== Product Search ==============
 // =============================================
-// - Lets users search for products
+// - Real-time search for products
 // - Back button returns to previous screen
-// - [ \\Displays search results matching user input\\ ]
+// - Display a list of top 5 relevant products
 // ---------------------------------------------
 import React, { useState } from 'react';
 import { 
@@ -20,10 +20,10 @@ import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 import FoundProducts from '../components/FoundProducts';    // Product Search Results
 import productData from '../data/productData';              // SAMPLE product array
+// console.log(productData);
 // ////////////////////////////////////////////////////////////////////////////////////////////
 // ////////////////////////////////////////////////////////////////////////////////////////////
 // ////////////////////////////////////////////////////////////////////////////////////////////
-
 export default function Search({ navigation }) {
   const [query, setQuery] = useState('');
 
@@ -65,7 +65,7 @@ export default function Search({ navigation }) {
       {/* --------- Search Results --------- */}
       {query !== '' && (
         <FoundProducts 
-            result={filteredResults || []} 
+            results={filteredResults || []} 
             query={query}
             onPressResult={(product) =>
                 navigation.navigate('ProductPage', { product })
@@ -88,17 +88,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 20,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
-    // marginHorizontal: 16,    
   },
   searchContainer: {
     flex: 1, // Search Bar fills the remaining space
     justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: colors.slightDarkerCream,
-    // margin: 20,
     borderRadius: 30,
     paddingHorizontal: 20,
-    // paddingVertical: 10,
     height: 50,
   },
   backButton: {

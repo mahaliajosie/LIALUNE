@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
+import { Pressable } from 'react-native-gesture-handler';
 
 const FoundProducts = ({ results, query }) => {
   const navigation = useNavigation();
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   boldText: {
-    fontWeight: 'bold',
+    fontFamily: fonts.boldBody,
     color: colors.primaryDeepBlue,
   },
   // separator: {

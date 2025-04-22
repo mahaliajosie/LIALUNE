@@ -34,7 +34,7 @@ export default [
       brandLogo: 'https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/liy6fjlwx7f79v2jmvmv',
       image: 'https://glowberry.gr/cdn/shop/files/DR.-ALTHEA-Rapid-Firm-Sculpting-Cream.webp?v=1732545100',
       description: 'A firming ampoule with peptides and Centella for skin elasticity.',
-      directions: 'Apply 2â3 drops to face and neck after toner.',
+      directions: 'Apply 2-3 drops to face and neck after toner.',
       ingredients: 'Water, Centella Asiatica Extract, Glycerin, Acetyl Hexapeptide-8, Madecassoside'
     },
     {
