@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Pressable } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
+// import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
 import { RFValue } from "react-native-responsive-fontsize";
@@ -73,7 +73,6 @@ export default function RoutineEdit({ route }) {
   };
 
   return (
-    <SafeAreaView style={styles.appArea}>
       <View style={styles.container}>
       {/* ---------- Header ---------- */}
       <View style={styles.header}>
@@ -121,35 +120,31 @@ export default function RoutineEdit({ route }) {
             barStyle="light-content"  // or 'dark-content' depending on background
         />
       </View>
-    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  appArea: {
-    flex: 1,
-    backgroundColor: colors.lightCream,
-  },
   container: {
     flex: 1,
     backgroundColor: colors.lightCream,
-    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     backgroundColor: colors.mainLialune,
-    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 60,
     // flexDirection: 'row',
     alignItems: 'center',          // Centered vertically
     justifyContent: 'center',      // Title centered horizontally
     position: 'relative',
-    // paddingHorizontal: 20,
+    paddingHorizontal: 20,
     paddingBottom: 10,
   },
   backButton: {
     position: 'absolute',
-    left: 20,
-    top: '50%',
-    transform: [{ translateY: -29 }],
+    left: 16,
+    // top: '50%',
+    // transform: [{ translateY: -29 }],
+    top: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 72,
   },
   titleContainer: {
     alignItems: 'center',
