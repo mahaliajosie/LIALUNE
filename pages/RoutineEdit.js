@@ -22,7 +22,7 @@ import RoutineItem from '../components/RoutineItem';
 import productData from '../data/productData';
 
 
-// * Intial test data, will be replaced by routineData.js 
+// * Intial test data, will be replaced by productData.js 
 const testData = [
     { id: '1', title: 'Oil Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/Dizajn_bez_naslova__2_s-removebg-preview.png?fit=500%2C500&ssl=1', step: 1 }, 
     { id: '2', title: 'Hydrating Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/13-1.png?fit=500%2C500&ssl=1', step: 2 }, 

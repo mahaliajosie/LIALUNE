@@ -64,7 +64,7 @@ export default function Search({navigation}) {
       {/* --------- Condtional Results if Searching --------- */}
       {query !== '' && (
         <FoundProducts 
-            result={filteredResults} 
+            result={filteredResults || []} 
             query={query}
             onPressResult={(product) =>
                 navigation.navigate('ProductPage', { product })

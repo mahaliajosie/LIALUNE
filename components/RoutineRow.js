@@ -29,7 +29,7 @@ export default function RoutineRow({
   return (
     <View style={styles.wrapper}>
       {/* ------ Search ------ */}
-      <Pressable onPress={() => navigation.navigate('ProductSearch')} style={styles.searchContainer}>
+      <Pressable onPress={() => navigation.navigate('Search')} style={styles.searchContainer}>
            <TextInput
             placeholder="+ add" // shown when nothing is typed
             value={search}

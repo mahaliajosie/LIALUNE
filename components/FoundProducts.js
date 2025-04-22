@@ -8,16 +8,16 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
-import colors from './constants/colors';
-import fonts from './constants/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
 
-const FoundProducts = ({ results, query, navigation }) => {
+const FoundProducts = ({ results, query }) => {
   const navigation = useNavigation();
 
   // - Filter Results based on query
   const queryLower = query.trim().toLowerCase();
-  const filteredResults = queryLower
+  const filteredResults = queryLower && Array.isArray(results)
     ? results.filter(prod =>
         `${prod.brand} ${prod.name}`.toLowerCase().includes(queryLower)
     )
@@ -46,7 +46,7 @@ const FoundProducts = ({ results, query, navigation }) => {
             </Text>
           );
         }
-        // - Rest of the query is in regular weight text
+        // - Rest of the query is in regular text
         return <Text key={index}>{part}</Text>;
       })}
       </Text>
@@ -121,7 +121,9 @@ const styles = StyleSheet.create({
     color: colors.primaryDeepBlue,
   },
   // separator: {
-
+  //   height: 1,
+  //   backgroundColor: '#ACACAC',
+  //   marginLeft: 60 // indent past image 
   // },
 });
 
