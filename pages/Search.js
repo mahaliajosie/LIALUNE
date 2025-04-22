@@ -51,7 +51,7 @@ export default function Search({ navigation }) {
             value={query}
             onChangeText={setQuery}
             placeholder="Find your product!"
-            placeholderTextColor={colors.lightCream}
+            placeholderTextColor={colors.primaryDeepBlue}
             autoFocus
           />
         </View>
