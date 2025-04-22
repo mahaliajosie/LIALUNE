@@ -6,7 +6,7 @@
 // - Navigation between components
 // -----------------------------------------------------
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Pressable } from 'react-native-gesture-handler';
@@ -18,7 +18,6 @@ import fonts from '../constants/fonts';
 // ---------- Components ----------
 import RoutineRow from '../components/RoutineRow';
 import RoutineItem from '../components/RoutineItem';
-// import routineData from '../data/routineData';
 import productData from '../data/productData';
 
 
@@ -32,9 +31,9 @@ const testData = [
 // ---------- Routine Edit Function ----------
 export default function RoutineEdit({ route }) {
   const category = route?.params?.category ?? 'Routine';  // * Retrieves the selected category from navigation (Hair, Face, etc.)
-  const [search, setSearch] = useState('');             // * Holds value in search bar
-  const [dailyMode, setDailyMode] = useState(false);    // * True = one routine for all days, False = unique routines for each day
-  const [selectedDay, setSelectedDay] = useState(0);    // * Monday = 0, & Sunday = 6
+  const [search, setSearch] = useState('');               // * Holds value in search bar
+  const [dailyMode, setDailyMode] = useState(false);      // * True = one routine for all days, False = unique routines for each day
+  const [selectedDay, setSelectedDay] = useState(0);      // * Monday = 0, & Sunday = 6
   const navigation = useNavigation(); 
 
   const [routine, setRoutine] = useState({
@@ -50,13 +49,27 @@ export default function RoutineEdit({ route }) {
   // * Converts selectedDay number into string equivalent
   const dayKey = ['MON', 'TUES', 'WED', 'THR', 'FRI', 'SAT', 'SUN'][selectedDay];
 
+  const calculateSteps = (data) => {
+    return data.map((item, index) => ({
+      ...item,
+      step: index + 1, // 1-based numbering instead of 0-based
+    }));
+  };
+
+  useEffect(() => {
+    if (routine[dayKey] && routine[dayKey].length > 0) {
+      const updated = calculateSteps(routine[dayKey]);
+      setRoutine(prev => ({
+        ...prev,
+        [dayKey]: updated,
+      }));
+    }
+  }, [routine[dayKey]]);
+
   // ---------- Reorder Routine Steps ----------
   const handleReorder = (data) => {
-    const updated = data.map((item, index) => ({
-      ...item,
-      step: index + 1,
-    }));
-    setRoutine(prev => ({
+    const updated = calculateSteps(data);
+    setRoutine((prev) => ({
       ...prev,
       [dayKey]: updated,
     }));
@@ -70,7 +83,7 @@ export default function RoutineEdit({ route }) {
             <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
         </Pressable>
         <Text style={styles.title}>{category}</Text>
-        <View style={{ width: 0 }} /> {/* Spacing on right of Category for symmentry */}
+        {/* <View style={{ width: 28 }} /> Spacing on right of Category for symmentry */}
       </View>
 
       {/* ---------- Search Bar & Daily Toggle ---------- */}
@@ -115,32 +128,61 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.lightCream,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 80 : 120,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    alignItems: 'center',          // Keeps everything centered vertically
+    // justifyContent: 'center',      // Title remains centered
     backgroundColor: colors.mainLialune,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 70,
-    paddingHorizontal: 15,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    paddingHorizontal: 20,
     paddingBottom: 20,
-    top: 0,
-    zIndex: 10,
-  },
-  title: {
-    fontSize: 64,
-    fontFamily: fonts.title,
-    color: colors.lightCream,
-    // alignItems: 'center',
+    // position: 'relative',
   },
   backButton: {
-    position: 'absolute',
-    top: 80,
-    left: 12,
-    right: 20,
-    zIndex: 2,
-  }
+    // position: 'absolute',
+    // left: 12,
+    // top: '50%',                   // Vertically center back arrow
+    // transform: [{ translateY: -14 }],  // Adjust for icon size (28px / 2)
+    marginRight: 16,
+  },
+
+  title: {
+    fontSize: 24,
+    fontFamily: fonts.heading,       // Your heading font
+    color: colors.lightCream,
+    // textAlign: 'center',
+  },
+
+  // header: {
+  //   flexDirection: 'row',
+  //   // width: '100%',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   // position: 'absolute',
+  //   backgroundColor: colors.mainLialune,
+  //   paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 70,
+  //   paddingHorizontal: 15,
+  //   paddingBottom: 20,
+  //   // top: 0,
+  //   // zIndex: 10,
+  // },
+  // title: {
+  //   fontSize: 64,
+  //   fontFamily: fonts.heading,
+  //   color: colors.lightCream,
+  //   // alignItems: 'center',
+  // },
+  // titleContainer: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // backButton: {
+  //   position: 'absolute',
+  //   // top: 80,
+  //   left: 12,
+  //   // right: 20,
+  //   // zIndex: 2,
+  // },
 });

@@ -21,6 +21,7 @@ import Startup from './pages/Startup';
 import NaviTabs from './navigation/NaviTabs';
 import RoutineEdit from './pages/RoutineEdit';
 import Search from './pages/Search';
+import ProductPage from './pages/ProductPage';
 import { ProductProvider } from './context/ProductContext'; 
 
 // Create stack objects, to define screen transitions
@@ -59,6 +60,7 @@ export default function App() {
             <Stack.Screen name="Navigation" component={NaviTabs} />
             <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
             <Stack.Screen name="Search" component={Search} />
+            <Stack.Screen name="ProductPage" component={ProductPage} />
           </Stack.Navigator>
         </NavigationContainer>
       </ProductProvider>

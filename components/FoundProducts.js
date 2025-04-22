@@ -6,12 +6,13 @@
 // - On tap, navigates to Product Page
 // ------------------------------------------------
 import React from 'react';
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
-import { Pressable } from 'react-native-gesture-handler';
+
 
 const FoundProducts = ({ results, query }) => {
   const navigation = useNavigation();
@@ -59,7 +60,7 @@ const FoundProducts = ({ results, query }) => {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
   return (
-      <View>
+      <View style={styles.resultContainer}>
           {topResults.map(product => (
               <Pressable
                   key={product.id}
@@ -74,7 +75,7 @@ const FoundProducts = ({ results, query }) => {
               >
                   {/* --- Product Images --- */}
                 <Image
-                    source={ product.image ? { uri : product.image } : spaPupImg }
+                    source={ product.image ? { uri: product.image } : spaPupImg }
                     defaultSource={spaPupImg}
                     style={styles.image}
                 />
@@ -93,6 +94,13 @@ const FoundProducts = ({ results, query }) => {
 };
 
 const styles = StyleSheet.create({
+  resultContainer: {
+    backgroundColor: colors.lightCream,
+    borderRadius: 12,
+    paddingVertical: 15,
+    marginHorizontal: 16,
+    marginTop: 10,
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
