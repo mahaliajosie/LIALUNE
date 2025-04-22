@@ -5,7 +5,7 @@
 //    * Search Input, Daily Toggle & Day of the Week Selection
 // ------------------------------------------------------------
 // - Reusable option rows for:
-// -    search bar, toggle mode, & any row with icon & text
+// -   search bar, toggle mode, & any row with icon & text
 // - Renders the products: image, name, brand & step
 // ------------------------------------------------------------
 import React from 'react';
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 12,
     paddingVertical: 18,
-    marginTop: 30,
+    // marginTop: 30,
     gap: 8,
   },
   addText: {

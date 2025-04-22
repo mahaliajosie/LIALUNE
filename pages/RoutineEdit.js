@@ -5,28 +5,19 @@
 // - Passes prompts back to components
 // - Navigation between components
 // -----------------------------------------------------
-
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-
 // ---------- Components ----------
 import RoutineRow from '../components/RoutineRow';
 import RoutineItem from '../components/RoutineItem';
 import productData from '../data/productData';
-
-
-// * Intial test data, will be replaced by productData.js 
-const testData = [
-    { id: '1', title: 'Oil Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/Dizajn_bez_naslova__2_s-removebg-preview.png?fit=500%2C500&ssl=1', step: 1 }, 
-    { id: '2', title: 'Hydrating Cleanse', brands: 'Haruharu', image: 'https://i0.wp.com/mikrokosmos.hr/wp-content/uploads/2024/10/13-1.png?fit=500%2C500&ssl=1', step: 2 }, 
-    { id: '3', title: 'Toner', brands: 'Anua', image: 'https://asianbeautyessentials.com/cdn/shop/files/ANUA77TONER1_5fc7ec57-1447-4883-b0ce-70905ea60573_1024x.png?v=1740704275', step: 3 }, 
-]
 
 // ---------- Routine Edit Function ----------
 export default function RoutineEdit({ route }) {
@@ -49,6 +40,7 @@ export default function RoutineEdit({ route }) {
   // * Converts selectedDay number into string equivalent
   const dayKey = ['MON', 'TUES', 'WED', 'THR', 'FRI', 'SAT', 'SUN'][selectedDay];
 
+  // ---------- Find Routine Steps ----------
   const calculateSteps = (data) => {
     return data.map((item, index) => ({
       ...item,
@@ -56,15 +48,19 @@ export default function RoutineEdit({ route }) {
     }));
   };
 
+  // ---------- Set Routine Steps ----------
   useEffect(() => {
-    if (routine[dayKey] && routine[dayKey].length > 0) {
-      const updated = calculateSteps(routine[dayKey]);
+    const currentData = routine[dayKey] || [];
+    const toUpdate = currentData.some((item, index) => item.step !== index + 1);
+  
+    if (toUpdate) {
+      const updated = calculateSteps(currentData);
       setRoutine(prev => ({
         ...prev,
         [dayKey]: updated,
       }));
     }
-  }, [routine[dayKey]]);
+  }, [routine, dayKey]);
 
   // ---------- Reorder Routine Steps ----------
   const handleReorder = (data) => {
@@ -78,13 +74,15 @@ export default function RoutineEdit({ route }) {
   return (
     <View style={styles.container}>
       {/* ---------- Header ---------- */}
-      <View style={styles.header}>
+      <SafeAreaView style={styles.header}>
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
             <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
         </Pressable>
-        <Text style={styles.title}>{category}</Text>
-        {/* <View style={{ width: 28 }} /> Spacing on right of Category for symmentry */}
-      </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{category}</Text>
+          {/* <View style={{ width: 28 }} /> Spacing on right of Category for symmentry */}
+        </View>
+      </SafeAreaView>
 
       {/* ---------- Search Bar & Daily Toggle ---------- */}
       <RoutineRow
@@ -131,58 +129,27 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',          // Keeps everything centered vertically
-    // justifyContent: 'center',      // Title remains centered
     backgroundColor: colors.mainLialune,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    // flexDirection: 'row',
+    // alignItems: 'center',          // Centered vertically
+    justifyContent: 'center',      // Title centered
+    position: 'relative',
     paddingHorizontal: 20,
-    paddingBottom: 20,
-    // position: 'relative',
+    paddingBottom: 10,
   },
   backButton: {
-    // position: 'absolute',
-    // left: 12,
-    // top: '50%',                   // Vertically center back arrow
-    // transform: [{ translateY: -14 }],  // Adjust for icon size (28px / 2)
-    marginRight: 16,
+    position: 'absolute',
+    // marginRight: 16,
+    left: 20,
+    top: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
   },
-
+  titleContainer: {
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 24,
-    fontFamily: fonts.heading,       // Your heading font
+    fontSize: RFValue(45),
+    fontFamily: fonts.heading,       
     color: colors.lightCream,
-    // textAlign: 'center',
   },
-
-  // header: {
-  //   flexDirection: 'row',
-  //   // width: '100%',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   // position: 'absolute',
-  //   backgroundColor: colors.mainLialune,
-  //   paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 70,
-  //   paddingHorizontal: 15,
-  //   paddingBottom: 20,
-  //   // top: 0,
-  //   // zIndex: 10,
-  // },
-  // title: {
-  //   fontSize: 64,
-  //   fontFamily: fonts.heading,
-  //   color: colors.lightCream,
-  //   // alignItems: 'center',
-  // },
-  // titleContainer: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // backButton: {
-  //   position: 'absolute',
-  //   // top: 80,
-  //   left: 12,
-  //   // right: 20,
-  //   // zIndex: 2,
-  // },
 });
