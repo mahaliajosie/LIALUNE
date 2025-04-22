@@ -6,12 +6,13 @@
 // - Navigation between components
 // -----------------------------------------------------
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Platform, StatusBar, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { Pressable } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 // ---------- Components ----------
@@ -72,9 +73,9 @@ export default function RoutineEdit({ route }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* ---------- Header ---------- */}
-      <SafeAreaView style={styles.header}>
+      <View style={styles.header}>
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
             <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
         </Pressable>
@@ -82,7 +83,7 @@ export default function RoutineEdit({ route }) {
           <Text style={styles.title}>{category}</Text>
           {/* <View style={{ width: 28 }} /> Spacing on right of Category for symmentry */}
         </View>
-      </SafeAreaView>
+      </View>
 
       {/* ---------- Search Bar & Daily Toggle ---------- */}
       <RoutineRow
@@ -118,7 +119,7 @@ export default function RoutineEdit({ route }) {
             backgroundColor="transparent"
             barStyle="light-content"  // or 'dark-content' depending on background
         />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -126,14 +127,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.lightCream,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   header: {
     backgroundColor: colors.mainLialune,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
-    // flexDirection: 'row',
-    // alignItems: 'center',          // Centered vertically
-    justifyContent: 'center',      // Title centered
+    // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    flexDirection: 'row',
+    alignItems: 'center',          // Centered vertically
+    justifyContent: 'center',      // Title centered horizontally
     position: 'relative',
     paddingHorizontal: 20,
     paddingBottom: 10,
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     // marginRight: 16,
     left: 20,
-    top: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
+    // top: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
   },
   titleContainer: {
     alignItems: 'center',
