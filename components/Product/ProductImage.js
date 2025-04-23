@@ -11,7 +11,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import colors from '../constants/colors';
-// import checkTransparency from '../../utils/checkTransparency';
+// import checkTransparency from '../utilities/checkTransparency.js';
 
 export default function ProductImage({ product, imageURI, setCustomImage }) {
   const [isTransparent, setIsTransparent] = useState(true);
