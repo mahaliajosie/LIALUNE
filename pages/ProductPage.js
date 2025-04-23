@@ -1,214 +1,143 @@
-// ===============================================
-// ================== ProductPage ================
-// ===============================================
-// - Displays a product's full details
-// - Allows favoriting, rating, image replacement
-// - Offers "Add to Routine" popup trigger
-// -----------------------------------------------
-
+// ==============================================
+// ================== ProductPage ==============
+// ==============================================
+// - Displays the product's full details
+// - Favorite, Rate, User's Image replacement
+// - "Add to Routine" pop-up redirect
+// ---------------------------------------------
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, 
-         Pressable, ScrollView, Modal, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Modal } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { useProductContext } from '../context/ProductContext';
-import * as ImagePicker from 'expo-image-picker';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
+// ---------------- Components ----------------
+import ProductImage from '../components/ProductPage/ProductImage';
+import ProductDetails from '../components/ProductPage/ProductDetails';
+import ProductActions from '../components/ProductPage/ProductActions';
 
 export default function ProductPage() {
-  const { params: { product } } = useRoute();
   const navigation = useNavigation();
+  const { params: { product } } = useRoute();
 
-  const {
-    favorites,
-    ratings,
-    customImages,
-    toggleFavorite,
-    setRating,
-    setCustomImage,
-  } = useProductContext();
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false); 
 
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const userRating = ratings[product.id] || 0;
-  const isFavorited = favorites[product.id];
-  const imageURI = customImages[product.id] || product.image;
-
-  // * Custom Image upload handler
-  const pickImage = async () => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== 'granted') {
-      alert('Permission to access library is required!');
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setCustomImage(product.id, result.assets[0].uri);
-    }
-  };
-
-  // * 5-Star Rating Handle 
-  const handleRating = (value) => {
-    setRating(product.id, value);
-  };
+  const toggleFavorite = () => setIsFavorite(prev => !prev);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       {/* ---------- Header ---------- */}
       <View style={styles.header}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={30} color={colors.lightCream} />
+        <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+          <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.primaryDeepBlue} />
         </Pressable>
-        <Text style={styles.headerTitle}>Lialune</Text>
-        <View style={{ width: 30 }} />
+        <Text style={styles.title}>lialune</Text>
+        <View style={{ width: 36 }} /> 
       </View>
 
-      {/* ---------- Product Image ---------- */}
-      <Pressable onPress={pickImage}>
-        <Image source={{ uri: imageURI }} style={styles.productImage} />
-      </Pressable>
-
-      {/* ---------- Brand Logo + Name ---------- */}
-      <Image source={{ uri: product.brandLogo }} style={styles.brandLogo} />
-      <Text style={styles.nameText}>{product.name}</Text>
-
-      {/* ---------- Favorite + Add Buttons ---------- */}
-      <View style={styles.iconRow}>
-        <TouchableOpacity onPress={() => toggleFavorite(product.id)}>
-          <Ionicons
-            name={isFavorited ? 'heart' : 'heart-outline'}
-            size={32}
-            color={colors.lialuneBlue}
+      <ScrollView contentContainerStyle={styles.content}>
+        {/* ---------- Product Top Section ---------- */}
+        <View style={styles.topSection}>
+          <ProductImage product={product} />
+          <ProductDetails 
+            product={product} 
+            rating={rating} 
+            setRating={setRating} 
           />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <Ionicons name="add-circle-outline" size={36} color={colors.lialuneBlue} />
-        </TouchableOpacity>
-      </View>
+          <ProductActions 
+            isFavorite={isFavorite} 
+            toggleFavorite={toggleFavorite} 
+            setModalVisible={setModalVisible} 
+          />
+        </View>
 
-      {/* ---------- Rating ---------- */}
-      <View style={styles.ratingRow}>
-        {[1, 2, 3, 4, 5].map((star) => {
-          const icon =
-            userRating >= star
-              ? 'star'
-              : userRating >= star - 0.5
-              ? 'star-half'
-              : 'star-outline';
-          return (
-            <Pressable key={star} onPress={() => handleRating(star)}>
-              <Ionicons name={icon} size={26} color="#FFD700" />
-            </Pressable>
-          );
-        })}
-      </View>
+        {/* ---------- Description / Directions / Ingredients ---------- */}
+        <View style={styles.infoSection}>
+          {product.description && (
+            <>
+              <Text style={styles.sectionTitle}>Description</Text>
+              <Text style={styles.sectionText}>{product.description}</Text>
+            </>
+          )}
 
-      {/* ---------- Description / Directions / Ingredients ---------- */}
-      <Text style={styles.sectionTitle}>Description</Text>
-      <Text style={styles.sectionText}>{product.description}</Text>
+          {product.directions && (
+            <>
+              <Text style={styles.sectionTitle}>Directions</Text>
+              <Text style={styles.sectionText}>{product.directions}</Text>
+            </>
+          )}
 
-      {product.directions ? (
-        <>
-          <Text style={styles.sectionTitle}>Directions</Text>
-          <Text style={styles.sectionText}>{product.directions}</Text>
-        </>
-      ) : null}
-
-      <Text style={styles.sectionTitle}>Ingredients</Text>
-      <Text style={styles.sectionText}>{product.ingredients}</Text>
+          <Text style={styles.sectionTitle}>Ingredients</Text>
+          <Text style={styles.sectionText}>{product.ingredients}</Text>
+        </View>
+      </ScrollView>
 
       {/* ---------- Add to Routine Modal ---------- */}
       <Modal
         visible={modalVisible}
         animationType="slide"
-        transparent={true}
+        transparent
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
-            <Text style={styles.modalText}>Add to routine coming soon!</Text>
+            <Text style={styles.modalText}>Add to Routine Coming Soon!</Text>
             <Pressable onPress={() => setModalVisible(false)}>
               <Text style={styles.modalClose}>Close</Text>
             </Pressable>
           </View>
         </View>
       </Modal>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: colors.backgroundBlue,
-    alignItems: 'center',
-    paddingBottom: 80,
   },
   header: {
-    width: '100%',
-    paddingTop: 60,
-    paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: colors.mainLialune,
     alignItems: 'center',
-    marginBottom: 20,
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    backgroundColor: colors.lightCream,
   },
-  headerTitle: {
-    fontSize: 20,
+  backButton: {
+    padding: 5,
+  },
+  title: {
     fontFamily: fonts.title,
-    color: colors.lightCream,
-  },
-  productImage: {
-    width: 180,
-    height: 180,
-    borderRadius: 12,
-    backgroundColor: colors.white,
-    marginBottom: 15,
-  },
-  brandLogo: {
-    width: 80,
-    height: 30,
-    resizeMode: 'contain',
-    marginBottom: 10,
-  },
-  nameText: {
     fontSize: 24,
-    fontFamily: fonts.body,
-    color: colors.mainLialune,
-    marginBottom: 10,
+    color: colors.mainBlue,
   },
-  iconRow: {
-    flexDirection: 'row',
-    gap: 30,
-    marginBottom: 10,
+  content: {
+    padding: 20,
   },
-  ratingRow: {
+  topSection: {
     flexDirection: 'row',
-    marginVertical: 15,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  infoSection: {
+    marginTop: 30,
   },
   sectionTitle: {
+    fontFamily: fonts.heading,
     fontSize: 18,
-    fontFamily: fonts.title,
-    alignSelf: 'flex-start',
-    marginLeft: 20,
+    color: colors.primaryDeepBlue,
     marginTop: 20,
-    color: '#003366',
   },
   sectionText: {
-    fontSize: 14,
     fontFamily: fonts.body,
-    color: '#333',
-    marginHorizontal: 20,
+    fontSize: 14,
+    color: colors.darkText,
     marginTop: 8,
-    lineHeight: 20,
   },
   modalOverlay: {
     flex: 1,
@@ -228,7 +157,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   modalClose: {
-    color: colors.mainLialune,
+    color: colors.mainBlue,
     fontWeight: 'bold',
   },
 });
