@@ -1,9 +1,9 @@
 // ==============================================
 // ============== ProductHeader.js ==============
 // ==============================================
-// - Displays the app name ("lialune") at the top
-// - Includes the back button to navigate back
-// - Ensures clean, reusable header across screens
+// - Displays app name ("lialune") at the top
+// - Back button to navigate back
+// - Clean, reusable header across screens
 // ----------------------------------------------
 
 import React from 'react';
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.title,
     fontSize: 24,
-    color: colors.mainBlue,
+    color: colors.mainLialune,
   },
 });
