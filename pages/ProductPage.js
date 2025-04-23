@@ -36,11 +36,12 @@ export default function ProductPage() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.topSection}>
           {/* --------- Product Image --------- */}
-          <ProductImage 
+          {/* <ProductImage 
             product={product}
             imageURI={imageURI}
             setCustomImage={setCustomImage}
-          />
+          /> */}
+          <ProductImage />
 
           {/* --------- Brand Logo, Name, Rating --------- */}
           <ProductDetails 
