@@ -87,8 +87,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginTop: 10,
+    pointerEvents: 'none',
   },
   star: {
     marginHorizontal: 5,
+    pointerEvents: 'none',
   },
 });

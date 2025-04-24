@@ -23,7 +23,7 @@ export default function ProductDetails({ product, onAddPress }) {
     <View style={styles.detailsContainer}>
       {/* ---------- Favorite & Add Buttons ---------- */}
         {/* === should these buttons remain here OR in ProductActions? === */}
-        
+
       {/* <View style={styles.topIcons}>
         <TouchableOpacity onPress={() => toggleFavorite(product.id)}>
           <Ionicons
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     marginLeft: 20,
+    // pointerEvents: 'none',
   },
   topIcons: {
     flexDirection: 'row',
@@ -66,12 +67,14 @@ const styles = StyleSheet.create({
     gap: 16,
     alignSelf: 'flex-end',
     marginBottom: 10,
+    // pointerEvents: 'none',
   },
   brandLogo: {
     width: 150,
     height: 100,
     resizeMode: 'contain',
     marginBottom: 10,
+    // pointerEvents: 'none',
   },
   productName: {
     fontSize: 20,
@@ -80,5 +83,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.body,
     color: colors.mainLialune,
     marginBottom: 10,
+    // pointerEvents: 'none',
   },
 });

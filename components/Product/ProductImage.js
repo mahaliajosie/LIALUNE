@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'contain',
+    pointerEvents: 'none',
   },
   nonTransparentImage: {
     borderRadius: 16,

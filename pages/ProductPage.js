@@ -41,7 +41,8 @@ export default function ProductPage() {
       {/* --------- Header (App Name & Back Button) --------- */}
       <ProductHeader navigation={navigation} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent}
+                  keyboardShouldPersistTaps="handled" >
         <View style={styles.topSection}>
           {/* --------- Product Image --------- */}
           <ProductImage 
