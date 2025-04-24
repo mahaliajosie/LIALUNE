@@ -1,8 +1,8 @@
 // =====================================================
 // ================== Product Details ==================
 // =====================================================
-// - Handles ALL the product information: 
-// --- Brand Logo, Product Name & Rating System
+// - Handles ALL the product information
+// - Static Information Display of: 
 // --- Product Description, Directions, Ingredients
 // ------------------------------------------------------
 

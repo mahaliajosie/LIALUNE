@@ -15,9 +15,8 @@ import ProductHeader from '../components/Product/ProductHeader';
 import ProductImage from '../components/Product/ProductImage'; 
 import ProductDetails from '../components/Product/ProductDetails'; 
 import ProductActions from '../components/ProductPage/ProductActions'; 
+import AddToRoutine from '../components/Product/modal/AddToRoutine';
 // --------------------------------
-
-// import AddToRoutineModal from '../components/ProductPage/AddToRoutineModal';
 // import { useProductContext } from '../context/ProductContext';
 
 export default function ProductPage() {
@@ -27,7 +26,7 @@ export default function ProductPage() {
 
   const userRating = ratings[product.id] || 0;
   const isFavorited = favorites[product.id];
-  const imageURI = customImages[product.id] || product.image;
+  // const imageURI = customImages[product.id] || product.image;
 
   return (
     <View style={styles.container}>
@@ -60,14 +59,14 @@ export default function ProductPage() {
           setModalVisible={setModalVisible}
         />
 
-        {/* --------- Add to Routine Modal --------- */}
-        {/* <AddToRoutineModal 
+        {/* --------- Add to Routine Pop-Up --------- */}
+        <AddToRoutine 
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
-        /> */}
+        />
 
         {/* --------- Product Description, Directions, Ingredients --------- */}
-        {/* You can create a separate component for this too if preferred */}
+        {/* *** might create separate component for this *** */}
         <View style={styles.infoSection}>
           <Text style={styles.sectionTitle}>Description</Text>
           <Text style={styles.sectionText}>{product.description}</Text>
