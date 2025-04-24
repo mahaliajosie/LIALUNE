@@ -57,5 +57,12 @@ export const ProductProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use anywhere to read/update the product's state
-export const useProductContext = () => useContext(ProductContext);
+// Default values to avoid undefined behavior 
+// - If a product hasn't been rated, favorited OR given a custom image yet
+export const useProductContext = () => {
+  const context = useContext(ProductContext);
+  if (!context) {
+    throw new Error('useProductContext must be used within a ProductProvider');
+  }
+  return context;
+};
