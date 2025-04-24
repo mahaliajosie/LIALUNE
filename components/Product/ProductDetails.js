@@ -9,10 +9,10 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { useProductContext } from '../context/ProductContext'; 
-import StarRating from '../components/Product/StarRating.js'; // Handles the 0.5-5 star rating system
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import { useProductContext } from '../../context/ProductContext'; 
+import StarRating from './StarRating'; // Handles the 0.5-5 star rating system
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 
 export default function ProductDetails({ product, onAddPress }) {
   const { favorites, toggleFavorite, ratings, setRating } = useProductContext();

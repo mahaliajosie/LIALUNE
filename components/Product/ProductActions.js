@@ -10,8 +10,8 @@ import { View, StyleSheet, Pressable } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart as solidHeart, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { useProductContext } from '../context/ProductContext';
-import colors from '../constants/colors';
+import { useProductContext } from '../../context/ProductContext';
+import colors from '../../constants/colors';
 
 export default function ProductActions({ product, openPopUp }) {
   const { favorites, toggleFavorite } = useProductContext();

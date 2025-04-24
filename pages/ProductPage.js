@@ -17,6 +17,7 @@ import ProductImage from '../components/Product/ProductImage';
 import ProductDetails from '../components/Product/ProductDetails'; 
 import ProductActions from '../components/Product/ProductActions'; 
 import AddToRoutine from '../components/Product/modal/AddToRoutine';
+import ProductInfo from '../components/Product/ProductInfo';
 // --------------------------------
 
 export default function ProductPage() {
@@ -66,6 +67,12 @@ export default function ProductPage() {
         />
 
         {/* --------- Product Description, Directions, Ingredients --------- */}
+
+        <ProductInfo
+          description={product.description}
+          directions={product.directions}
+          ingredients={product.ingredients}
+        />
         {/* *** might create separate component for this *** */}
         {/* <View style={styles.infoSection}>
           <Text style={styles.sectionTitle}>Description</Text>

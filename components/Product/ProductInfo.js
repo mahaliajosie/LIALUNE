@@ -8,8 +8,8 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 
 export default function ProductInfo({ description, directions, ingredients }) {
   return (

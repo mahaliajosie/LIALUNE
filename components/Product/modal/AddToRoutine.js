@@ -10,8 +10,8 @@ import { View, Text, StyleSheet, Modal, Pressable, Animated } from 'react-native
 import { BlurView } from 'expo-blur';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from '../../../constants/colors';
+import fonts from '../../../constants/fonts';
 
 export default function AddToRoutineModal({ visible, onClose }) {
   const fadeAnim = useRef(new Animated.Value(0)).current;

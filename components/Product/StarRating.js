@@ -11,7 +11,7 @@ import * as Haptics from 'expo-haptics';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faStar as solidStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-import colors from '../constants/colors';
+import colors from '../../constants/colors';
 
 const TOTAL_STARS = 5; // * Amount of stars to display
 
