@@ -37,18 +37,19 @@ export default function ProductHeader() {
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 20 : 80,
     paddingHorizontal: 20,
+    paddingBottom: 10,
     backgroundColor: colors.lightCream,
-  },
-  backButton: {
-    padding: 5,
   },
   title: {
     fontFamily: fonts.title,
-    fontSize: 24,
+    fontSize: 40,
     color: colors.mainLialune,
+  },
+  backButton: {
+    padding: 5,
   },
 });
