@@ -8,6 +8,22 @@
 
 import React, { createContext, useState, useContext } from 'react';
 
+// __________________ FOR FUTURE SCALING __________________
+// ________________________________________________________
+// - Instead of using the useState change to useReducer 
+// --- to improve performance and handle more data 
+// ________________________________________________________
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case 'TOGGLE_FAVORITE':
+//       return { ...state, favorites: { ...state.favorites, [action.productId]: !state.favorites[action.productId] }};
+//     // Add more cases for SET_RATING, SET_CUSTOM_IMAGE, etc.
+//     default:
+//       return state;
+//   }
+// };
+// ________________________________________________________
+
 // * Create the context to manage product state throughout
 const ProductContext = createContext();
 
@@ -16,6 +32,11 @@ export const ProductProvider = ({ children }) => {
   const [favorites, setFavorites] = useState({});
   const [ratings, setRatings] = useState({});
   const [customImages, setCustomImages] = useState({});
+
+  // // Reset data manually (optional)
+  // const clearFavorites = () => setFavorites({});
+  // const clearRatings = () => setRatings({});
+  // const clearCustomImages = () => setCustomImages({});
 
   // * Toggle favorite status
   const toggleFavorite = (productId) => {
