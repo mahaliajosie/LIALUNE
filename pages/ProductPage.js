@@ -15,7 +15,7 @@ import fonts from '../constants/fonts';
 import ProductHeader from '../components/Product/ProductHeader'; 
 import ProductImage from '../components/Product/ProductImage'; 
 import ProductDetails from '../components/Product/ProductDetails'; 
-import ProductActions from '../components/ProductPage/ProductActions'; 
+import ProductActions from '../components/Product/ProductActions'; 
 import AddToRoutine from '../components/Product/modal/AddToRoutine';
 // --------------------------------
 

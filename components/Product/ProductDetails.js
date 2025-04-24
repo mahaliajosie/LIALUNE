@@ -1,19 +1,18 @@
 // =====================================================
 // ================== Product Details ==================
 // =====================================================
-// - Handles ALL the product information
-// - Static Information Display of: 
-// --- Product Description, Directions, Ingredients
+// - Handles Brand Logo, Name, & Star Rating 
+// - Displayes Favorite toggle & 'Add to Routine' Button 
 // ------------------------------------------------------
 
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { useProductContext } from '../context/ProductContext'; 
+import StarRating from '../components/Product/StarRating.js'; // Handles the 0.5-5 star rating system
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import StarRating from '../components/Product/StarRating.js'; // Handles the 0.5-5 star rating system
-import { useProductContext } from '../context/ProductContext';
 
 export default function ProductDetails({ product, onAddPress }) {
   const { favorites, toggleFavorite, ratings, setRating } = useProductContext();
@@ -32,7 +31,7 @@ export default function ProductDetails({ product, onAddPress }) {
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={onAddPress}>
-          <Ionicons name="add-circle-outline" size={32} color={colors.lialuneBlue} />
+          <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />
         </TouchableOpacity>
       </View>
 

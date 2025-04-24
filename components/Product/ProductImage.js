@@ -7,8 +7,8 @@
 // --------------------------------------------------
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import colors from '../constants/colors';
 import checkTransparency from '../utilities/checkTransparency';
