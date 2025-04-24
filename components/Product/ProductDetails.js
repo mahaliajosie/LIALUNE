@@ -1,8 +1,9 @@
 // =====================================================
 // ================== Product Details ==================
 // =====================================================
-// - Displays Brand Logo, Product Name & Rating System
-// - Buttons = Favorite toggle & add-to-routine 
+// - Handles ALL the product information: 
+// --- Brand Logo, Product Name & Rating System
+// --- Product Description, Directions, Ingredients
 // ------------------------------------------------------
 
 import React from 'react';
@@ -11,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-// import StarRating from './StarRating'; // Handles the 0.5-5 star rating system
+import StarRating from '../components/Product/StarRating.js'; // Handles the 0.5-5 star rating system
 // import { useProductContext } from '../context/ProductContext';
 
 export default function ProductDetails({ product, onAddPress }) {

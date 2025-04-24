@@ -1,8 +1,8 @@
 // ==================================================
 // ================== ProductImage ==================
 // ==================================================
-// - Displays product image
-// - Allows users to upload their own image
+// - Displays (preferably transparent) Product Image
+// - Allows users to UPLOAD their own image
 // - Handles transparent vs. non-transparent images
 // --------------------------------------------------
 import React, { useState } from 'react';
@@ -11,7 +11,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import colors from '../constants/colors';
-import checkTransparency from '../utilities/checkTransparency.js';
+import checkTransparency from '../utilities/checkTransparency';
 
 export default function ProductImage({ product, imageURI, setCustomImage }) {
   const [isTransparent, setIsTransparent] = useState(true);
