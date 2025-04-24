@@ -8,16 +8,16 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import { useProductContext } from '../context/ProductContext';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 // ---------- Components ----------
 import ProductHeader from '../components/Product/ProductHeader'; 
+import ProductImage from '../components/Product/ProductImage'; 
+import ProductDetails from '../components/Product/ProductDetails'; 
 // --------------------------------
-import ProductImage from '../components/ProductPage/ProductImage'; 
-import ProductDetails from '../components/ProductPage/ProductDetails'; 
-import ProductActions from '../components/ProductPage/ProductActions'; 
-import AddToRoutineModal from '../components/ProductPage/AddToRoutineModal';
+// import ProductActions from '../components/ProductPage/ProductActions'; 
+// import AddToRoutineModal from '../components/ProductPage/AddToRoutineModal';
+// import { useProductContext } from '../context/ProductContext';
 
 export default function ProductPage() {
   const { params: { product } } = useRoute();
@@ -52,18 +52,18 @@ export default function ProductPage() {
         </View>
 
         {/* --------- Favorite + Add Buttons --------- */}
-        <ProductActions 
+        {/* <ProductActions 
           product={product}
           isFavorited={isFavorited}
           toggleFavorite={toggleFavorite}
           setModalVisible={setModalVisible}
-        />
+        /> */}
 
         {/* --------- Add to Routine Modal --------- */}
-        <AddToRoutineModal 
+        {/* <AddToRoutineModal 
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
-        />
+        /> */}
 
         {/* --------- Product Description, Directions, Ingredients --------- */}
         {/* You can create a separate component for this too if preferred */}
