@@ -13,7 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 import StarRating from '../components/Product/StarRating.js'; // Handles the 0.5-5 star rating system
-// import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../context/ProductContext';
 
 export default function ProductDetails({ product, onAddPress }) {
   const { favorites, toggleFavorite, ratings, setRating } = useProductContext();

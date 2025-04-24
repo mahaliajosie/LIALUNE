@@ -33,7 +33,7 @@ export const ProductProvider = ({ children }) => {
   const [ratings, setRatings] = useState({});
   const [customImages, setCustomImages] = useState({});
 
-  // // Reset data manually (optional)
+  // // * Reset data manually (optional)
   // const clearFavorites = () => setFavorites({});
   // const clearRatings = () => setRatings({});
   // const clearCustomImages = () => setCustomImages({});

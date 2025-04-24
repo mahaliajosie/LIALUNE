@@ -7,7 +7,8 @@
 // -----------------------------------------------
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { useProductContext } from '../context/ProductContext';
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
 // ---------- Components ----------
@@ -17,31 +18,36 @@ import ProductDetails from '../components/Product/ProductDetails';
 import ProductActions from '../components/ProductPage/ProductActions'; 
 import AddToRoutine from '../components/Product/modal/AddToRoutine';
 // --------------------------------
-// import { useProductContext } from '../context/ProductContext';
 
 export default function ProductPage() {
+  const navigation = useNavigation();
   const { params: { product } } = useRoute();
-  const { favorites, ratings, toggleFavorite, setRating, customImages, setCustomImage } = useProductContext();
+  const { favorites,
+          toggleFavorite, 
+          ratings, 
+          setRating,     
+          customImages, 
+          setCustomImage } = useProductContext();
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const userRating = ratings[product.id] || 0;
   const isFavorited = favorites[product.id];
-  // const imageURI = customImages[product.id] || product.image;
+  const imageURI = customImages[product.id] || product.image;
 
   return (
     <View style={styles.container}>
-      {/* --------- Header --------- */}
-      <ProductHeader />
+      {/* --------- Header (App Name & Back Button) --------- */}
+      <ProductHeader navigation={navigation} />
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.topSection}>
           {/* --------- Product Image --------- */}
-          {/* <ProductImage 
+          <ProductImage 
             product={product}
             imageURI={imageURI}
             setCustomImage={setCustomImage}
-          /> */}
-          <ProductImage />
+          />
 
           {/* --------- Brand Logo, Name, Rating --------- */}
           <ProductDetails 
@@ -51,7 +57,7 @@ export default function ProductPage() {
           />
         </View>
 
-        {/* --------- Favorite + Add Buttons --------- */}
+        {/* --------- Favorite & Add Buttons --------- */}
         <ProductActions 
           product={product}
           isFavorited={isFavorited}
@@ -59,15 +65,9 @@ export default function ProductPage() {
           setModalVisible={setModalVisible}
         />
 
-        {/* --------- Add to Routine Pop-Up --------- */}
-        <AddToRoutine 
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-        />
-
         {/* --------- Product Description, Directions, Ingredients --------- */}
         {/* *** might create separate component for this *** */}
-        <View style={styles.infoSection}>
+        {/* <View style={styles.infoSection}>
           <Text style={styles.sectionTitle}>Description</Text>
           <Text style={styles.sectionText}>{product.description}</Text>
 
@@ -80,8 +80,14 @@ export default function ProductPage() {
 
           <Text style={styles.sectionTitle}>Ingredients</Text>
           <Text style={styles.sectionText}>{product.ingredients}</Text>
-        </View>
+        </View> */}
       </ScrollView>
+
+      {/* --------- Add to Routine Pop-Up --------- */}
+      <AddToRoutine 
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
     </View>
   );
 }
