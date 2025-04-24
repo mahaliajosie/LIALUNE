@@ -66,7 +66,7 @@ export default function StarRating({ rating, onRatingChange }) {
         key={starIndex}
         icon={icon}
         size={32}
-        color={colors.lialuneBlue}
+        color={colors.mainLialune}
         style={styles.star}
       />
     );

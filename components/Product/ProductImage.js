@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   image: {
-    width: 120,
-    height: 120,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
   },
   nonTransparentImage: {
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
 // ******************************************************************
 // import React, { useEffect, useState } from 'react';
 // import { View, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
-// import checkTransparency from '../utilities/checkTransparency';
 // import { Ionicons } from '@expo/vector-icons';
-// import colors from '../constants/colors';
+// import colors from '../../constants/colors';
+// import checkTransparency from '../../utilities/checkTransparency';
 
 // export default function ProductImage({ imageUri, onChangeImage }) {
 //   const [isTransparent, setIsTransparent] = useState(false);

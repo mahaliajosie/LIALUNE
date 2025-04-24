@@ -22,7 +22,9 @@ export default function ProductDetails({ product, onAddPress }) {
   return (
     <View style={styles.detailsContainer}>
       {/* ---------- Favorite & Add Buttons ---------- */}
-      <View style={styles.topIcons}>
+        {/* === should these buttons remain here OR in ProductActions? === */}
+        
+      {/* <View style={styles.topIcons}>
         <TouchableOpacity onPress={() => toggleFavorite(product.id)}>
           <Ionicons
             name={isFavorited ? 'heart' : 'heart-outline'}
@@ -33,7 +35,7 @@ export default function ProductDetails({ product, onAddPress }) {
         <TouchableOpacity onPress={onAddPress}>
           <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* ---------- Brand Logo & Product Info ---------- */}
       <Image
@@ -66,13 +68,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   brandLogo: {
-    width: 80,
-    height: 30,
+    width: 150,
+    height: 100,
     resizeMode: 'contain',
     marginBottom: 10,
   },
   productName: {
-    fontSize: 24,
+    fontSize: 20,
+    // justifyContent: 'center',
+    // alignItems: 'center',
     fontFamily: fonts.body,
     color: colors.mainLialune,
     marginBottom: 10,

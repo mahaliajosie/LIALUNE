@@ -47,15 +47,16 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    fontFamily: fonts.title,
+    fontFamily: fonts.heading,
     color: colors.primaryDeepBlue,
     marginTop: 12,
     marginBottom: 6,
+    backgroundColor: colors.mainLialune, // * NEED to wrap in a separate container for the section titles 
   },
   sectionText: {
     fontSize: 14,
     fontFamily: fonts.body,
-    color: '#333',
-    lineHeight: 20,
+    color: '#AF8346', // - darker brown color
+    lineHeight: 20, // - spacing between lines
   },
 });
