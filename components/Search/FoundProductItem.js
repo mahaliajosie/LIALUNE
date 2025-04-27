@@ -5,10 +5,10 @@
 // - Navigation to Product Page
 // ----------------------------------------------------
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { Pressable } from 'react-native-gesture-handler';
+import { Image, StyleSheet, Pressable } from 'react-native';
+// import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
-import BoldText from '@BoldText';
+import BoldText from './BoldText';
 import colors from '@constants/colors';
 // import fonts from '../../constants/fonts';
 import spaPupImg from '@assets/spaPup.jpg'; // fallback image 

@@ -34,9 +34,7 @@ export default function RoutineItem({ item, drag, isActive, index }) {
         <Text style={styles.productName}>{item.title}</Text>
         <Text style={styles.productBrand}>{item.brand}</Text>
       </View>
-      <Text>
         <Ionicons name="menu" size={24} color={colors.mainLialune} />
-      </Text>
     </Pressable>
   );
 }

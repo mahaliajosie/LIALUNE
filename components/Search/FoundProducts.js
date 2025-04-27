@@ -10,7 +10,7 @@
 // ------------------------------------------------
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import FoundProductItem from '@FoundProductItem';
+import FoundProductItem from './FoundProductItem';
 import colors from '@constants/colors';
 
 export default function FoundProducts({ results, query, onPressResult }) {

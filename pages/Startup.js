@@ -32,7 +32,7 @@ export default function Startup({ navigation }) {
       
       Animated.timing(fadeAnim, { // fadeAnim from 0 to 1 (transparent -> visible)
         toValue: 1,
-        duration: 1000, // in milliseconds 
+        duration: 800, // in milliseconds 
         useNativeDriver: true, // enables better performance via native animation thread
       }),
 
@@ -40,7 +40,7 @@ export default function Startup({ navigation }) {
       
       Animated.timing(fadeAnim, { // fadeAnim from 1 to 0 (visible -> transparent)
         toValue: 0,
-        duration: 1000, // in milliseconds 
+        duration: 800, // in milliseconds 
         useNativeDriver: true,
       }),
     ]).start(() => navigation.replace('Navigation')); // (6) after animation sequences, prevents user from going back to the startup screen

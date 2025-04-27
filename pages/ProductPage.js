@@ -44,6 +44,12 @@ export default function ProductPage() {
       {/* <Pressable onPress={() => navigation.goBack()} style={{ padding: 20, backgroundColor: 'red' }}>
         <Text style={{ color: 'white' }}>TEST Back Button</Text>
       </Pressable> */}
+      <View style={{ padding: 20, backgroundColor: 'red' }}>
+        <Text style={{ color: 'white' }}>Touchable Test Area</Text>
+        <Pressable onPress={() => alert('Pressed!')} style={{ padding: 10, backgroundColor: 'blue' }}>
+          <Text style={{ color: 'white' }}>Press Me</Text>
+        </Pressable>
+      </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}
                   keyboardShouldPersistTaps="handled" 

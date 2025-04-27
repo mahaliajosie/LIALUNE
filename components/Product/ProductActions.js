@@ -21,18 +21,14 @@ export default function ProductActions({ product, openPopUp }) {
     <View style={styles.container}>
       {/* ---------- Favorite Toggle ---------- */}
       <Pressable onPress={() => toggleFavorite(product.id)} style={({ pressed }) => [styles.iconButton, pressed && styles.pressed]}>
-        <Text>
           <FontAwesomeIcon icon={isFavorited ? solidHeart : regularHeart} size={24} color={colors.mainLialune} />
         {/* <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,0,0,0.3)' }} /> */}
-        </Text>
       </Pressable>
 
       {/* ---------- Add to Routine  ---------- */}
       <Pressable onPress={openPopUp} style={({ pressed }) => [styles.iconButton, pressed && styles.pressed]}>
-        <Text>
           <FontAwesomeIcon icon={faPlus} size={24} color={colors.mainLialune} />
         {/* <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,0,0,0.3)' }} /> */}
-        </Text>
       </Pressable>
     </View>
   );

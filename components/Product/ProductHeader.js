@@ -12,12 +12,13 @@ import { View, Text, StyleSheet, Pressable, Platform, StatusBar } from 'react-na
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 
 export default function ProductHeader() {
   const navigation = useNavigation();
   // console.log('Navigation object:', navigation);
+  console.log('Can go back?', navigation.canGoBack());
 
   return (
     <View style={styles.headerContainer} pointerEvents="box-none">
