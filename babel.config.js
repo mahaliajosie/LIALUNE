@@ -4,7 +4,7 @@
 // * into code that can run on older environments (like Android and iOS native layers)
 // * without this Metro won't recognize shortcuts. 
 // -----------------------------------------------------------
-module.exports = function(api) {
+module.exports = function(api) { 
     api.cache(true); // - Improves performance by caching the config
   
     return {
