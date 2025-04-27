@@ -1,19 +1,19 @@
-// ==============================================
-// ============ AddToRoutineModal.js ============
-// ==============================================
+// ===============================================
+// ============ Add-To-Routine Pop-up ============
+// ===============================================
 // - Fade-in/out modal with blurred background
 // - Displays "Coming Soon!" message
-// ----------------------------------------------
+// -----------------------------------------------
 
 import React, { useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Modal, Pressable, Animated } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import colors from '../../../constants/colors';
-import fonts from '../../../constants/fonts';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 
-export default function AddToRoutineModal({ visible, onClose }) {
+export default function AddToRoutine({ visible, onClose }) {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   // * Fade in/out animation
@@ -37,7 +37,8 @@ export default function AddToRoutineModal({ visible, onClose }) {
     <Modal
       transparent
       visible={visible}
-      animationType="none" // Using custom fade instead of default animations
+      animationType="none" // Using custom fade instead of default "fade"
+      onRequestClose={() => setModalVisible(false)}
     >
       <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
         <BlurView intensity={80} tint="light" style={styles.blur}>
@@ -45,10 +46,10 @@ export default function AddToRoutineModal({ visible, onClose }) {
           <View style={styles.modalBox}>
             <Pressable onPress={onClose} style={styles.closeButton}>
               <Text>
-                <FontAwesomeIcon icon={faXmark} size={24} color={colors.primaryDeepBlue} />
+                <FontAwesomeIcon icon={faCircleXmark} size={24} color={colors.primaryDeepBlue} />
               </Text>
             </Pressable>
-            <Text style={styles.modalText}>Add to Routine Coming Soon!</Text>
+            <Text style={styles.modalText}>Coming Soon!</Text>
           </View>
         </BlurView>
       </Animated.View>

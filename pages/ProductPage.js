@@ -1,9 +1,22 @@
-import React from 'react';
+// ===============================================
+// ================= ProductPage =================
+// ===============================================
+// - Displays the product's full details
+// - Favorite, Rate, User's Image replacement
+// - "Add to Routine" pop-up redirect
+// -----------------------------------------------
+import React, { useState } from 'react';
 import { View, Pressable, Text, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+// ---------- Components ----------
 import ProductHeader from '@components/Product/ProductHeader'; 
 import ProductImage from '@components/Product/ProductImage'; 
 import { useProductContext } from '@context/ProductContext';
+import ProductDetails from '@components/Product/ProductDetails'; 
+import ProductActions from '@components/Product/ProductActions'; 
+import ProductInfo from '@components/Product/ProductInfo';
+import AddToRoutine from '@components/Product/modal/AddToRoutine';
+// --------------------------------
 
 export default function ProductPage() {
   const navigation = useNavigation();
@@ -16,9 +29,13 @@ export default function ProductPage() {
           setCustomImage } = useProductContext();
 
   const imageURI = customImages[product.id] || product.image;
+  const userRating = ratings[product.id] || 0;
+  const isFavorited = favorites[product.id];
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: 'rgba(192, 17, 215, 0.1)' }}>
+      {/* --------- HEADER (App Name & Back Button) --------- */}
       <ProductHeader />
 
       <ScrollView contentContainerStyle={styles.scrollContent}
@@ -30,7 +47,35 @@ export default function ProductPage() {
             product={product}
             imageURI={imageURI}
             setCustomImage={setCustomImage}
-          /></View>
+          />
+
+          {/* --------- Brand Logo, Name, Rating --------- */}
+          <ProductDetails 
+            product={product}
+            userRating={userRating}
+            setRating={setRating}
+          />
+        </View>
+        {/* --------- Favorite & Add Buttons --------- */}
+        <ProductActions 
+           product={product}
+           isFavorited={isFavorited}
+           toggleFavorite={toggleFavorite}
+           setModalVisible={setModalVisible}
+        />
+
+        {/* --------- Product Description, Directions, Ingredients --------- */}
+        <ProductInfo
+          description={product.description}
+          directions={product.directions}
+          ingredients={product.ingredients}
+        />
+
+        {/* --------- Add to Routine Pop-Up --------- */}
+        <AddToRoutine 
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
       </ScrollView>
     </View>
   );
@@ -42,7 +87,7 @@ const styles = StyleSheet.create({
   text: { color: 'white' },
 
   scrollContent: {
-    paddingTop: 140,      // Match your header height
+    paddingTop: 80,      // Match your header height
     paddingBottom: 100, 
   },
   topSection: {
@@ -55,17 +100,6 @@ const styles = StyleSheet.create({
 
 
 
-
-
-
-
-// // ===============================================
-// // ================= ProductPage =================
-// // ===============================================
-// // - Displays the product's full details
-// // - Favorite, Rate, User's Image replacement
-// // - "Add to Routine" pop-up redirect
-// // -----------------------------------------------
 // import React, { useState } from 'react';
 // import { View, StyleSheet, ScrollView, Pressable, Text } from 'react-native';
 // import { useRoute, useNavigation } from '@react-navigation/native';
