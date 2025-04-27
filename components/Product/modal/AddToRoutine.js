@@ -45,9 +45,7 @@ export default function AddToRoutine({ visible, onClose }) {
           {/* ---------- Pop-up Box ---------- */}
           <View style={styles.modalBox}>
             <Pressable onPress={onClose} style={styles.closeButton}>
-              <Text>
                 <FontAwesomeIcon icon={faCircleXmark} size={24} color={colors.primaryDeepBlue} />
-              </Text>
             </Pressable>
             <Text style={styles.modalText}>Coming Soon!</Text>
           </View>
