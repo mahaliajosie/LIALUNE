@@ -4,7 +4,6 @@
 // - Fade-in/out modal with blurred background
 // - Displays "Coming Soon!" message
 // -----------------------------------------------
-
 import React, { useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, Modal, Pressable, Animated } from 'react-native';
 import { BlurView } from 'expo-blur';
@@ -38,7 +37,7 @@ export default function AddToRoutine({ visible, onClose }) {
       transparent
       visible={visible}
       animationType="none" // Using custom fade instead of default "fade"
-      onRequestClose={ onClose } // * FIX - correct prop
+      onRequestClose={ onClose } 
     > { visible && ( 
       <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
         <BlurView intensity={80} tint="light" style={styles.blur}>

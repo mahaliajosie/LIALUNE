@@ -73,8 +73,8 @@ export default function ProductPage() {
 
         {/* --------- Add to Routine Pop-Up --------- */}
         <AddToRoutine 
-          visible={modalVisible}                  // * FIX - correct prop
-          onClose={() => setModalVisible(false)}  // * FIX - correct prop
+          visible={modalVisible}                  
+          onClose={() => setModalVisible(false)}  
         />
       </ScrollView>
     </View>

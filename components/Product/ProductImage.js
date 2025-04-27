@@ -7,11 +7,12 @@
 // --------------------------------------------------
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Pressable, ActivityIndicator, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import colors from '../../constants/colors';
-import checkTransparency from '../../utilities/checkTransparency';
+// import { Ionicons } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+
+import checkTransparency from '@utilities/checkTransparency';
+import colors from '@constants/colors';
 
 export default function ProductImage({ product, imageURI, setCustomImage }) {
   const [isTransparent, setIsTransparent] = useState(true);
@@ -59,7 +60,8 @@ export default function ProductImage({ product, imageURI, setCustomImage }) {
       />
       <View style={styles.editIcon}>
         <Text>
-          <Ionicons name="create-outline" size={18} color={colors.lightCream} />
+          {/* <Ionicons name="create-outline" size={18} color={colors.lightCream} /> */}
+          <FontAwesomeIcon icon={faPaintbrush} size={18} color={colors.primaryDeepBlue} />
         </Text>
       </View>
     </Pressable>
