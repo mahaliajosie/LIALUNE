@@ -1,17 +1,17 @@
 // ====================================================
 // ================ Found Product Item ================
 // ====================================================
-// - Handles each product result & navigation
+// - Handles each product result 
+// - Navigation to Product Page
 // ----------------------------------------------------
-
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
 import BoldText from './BoldText';
 import colors from '../../constants/colors';
 // import fonts from '../../constants/fonts';
-import spaPupImg from '../../assets/spaPup.jpg';
+import spaPupImg from '../../assets/spaPup.jpg'; // fallback image 
 
 export default function FoundProductItem({ product, query, onPressResult }) {
   const navigation = useNavigation();

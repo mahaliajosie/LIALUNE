@@ -1,9 +1,14 @@
+// ===========================================
+// ================ Bold Text ================
+// ===========================================
+// - Text Matching & Bold highlighting  
+// -------------------------------------------
 import React from 'react';
 import { Text } from 'react-native';
 import colors from '../../constants/colors';
 import fonts from '../../constants/fonts';
 
-export default function HighlightText({ text, query }) {
+export default function BoldText({ text, query }) {
   if (!query) {
     return <Text style={styles.productText}>{text}</Text>;
   }
