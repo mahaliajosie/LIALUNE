@@ -16,6 +16,7 @@ import { Gantari_500Medium } from '@expo-google-fonts/gantari';
 import { Gantari_400Regular } from '@expo-google-fonts/gantari';
 import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // SCREENS
 import Startup from '@pages/Startup';
@@ -53,7 +54,8 @@ export default function App() {
   // - 'Stack.Navigator' = sets up a stack navigation sturcture & 'headerShown: false' = hides default navigation bar at the top
   // - 'Stack.Screen' = defines the screens in the app 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    // <GestureHandlerRootView style={{ flex: 1 }}>
+    <SafeAreaProvider>
       <ProductProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false, gestureEnabled: true, }}>
@@ -65,6 +67,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </ProductProvider>
-    </GestureHandlerRootView>
+    </SafeAreaProvider>
+    // </GestureHandlerRootView>
   );
 }
