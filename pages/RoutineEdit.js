@@ -6,9 +6,9 @@
 // - Navigation between components
 // -----------------------------------------------------
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Platform, StatusBar, Pressable } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { Pressable } from 'react-native-gesture-handler';
+// import { Pressable } from 'react-native-gesture-handler';
 // import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';

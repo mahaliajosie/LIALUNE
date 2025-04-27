@@ -17,16 +17,32 @@ import fonts from '../../constants/fonts';
 
 export default function ProductHeader() {
   const navigation = useNavigation();
+  // console.log('Navigation object:', navigation);
 
   return (
-    <View style={styles.headerContainer}>
+    <View style={styles.headerContainer} pointerEvents="box-none">
       {/* ----- Back Button ----- */}
-      <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+      {/* <Pressable onPress={() => navigation.goBack()} style={styles.backButton}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} >
+        <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,0,0,0.3)' }} />
+      </Pressable> */}
+
+      <Pressable onPress={() => { 
+        if (navigation.canGoBack()) {
+          navigation.goBack();
+        } else {
+          console.warn('Cannot Go Back')
+        }
+      }} style={styles.backButton}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} >
         <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
       </Pressable>
 
       {/* ----- App Title ----- */}
-      <Text style={styles.title}>lialune</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>lialune</Text>
+      </View>
 
       {/* ----- Spacer for symmetry ----- */}
       <View style={{ width: 36 }} />
@@ -43,6 +59,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 10,
     backgroundColor: colors.lightCream,
+    zIndex: 10, 
+    elevation: 10,
+    position: 'relative',
+  },
+  titleContainer: {
+    flex: 1,
+    alignItems: 'center', 
   },
   title: {
     fontFamily: fonts.title,

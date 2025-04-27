@@ -6,7 +6,7 @@
 // - "Add to Routine" pop-up redirect
 // -----------------------------------------------
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, Pressable, Text } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { useProductContext } from '../context/ProductContext';
 import colors from '../constants/colors';
@@ -39,10 +39,15 @@ export default function ProductPage() {
   return (
     <View style={styles.container}>
       {/* --------- Header (App Name & Back Button) --------- */}
-      <ProductHeader navigation={navigation} />
+      {/* <ProductHeader navigation={navigation} /> */}
+      <ProductHeader />
+      {/* <Pressable onPress={() => navigation.goBack()} style={{ padding: 20, backgroundColor: 'red' }}>
+        <Text style={{ color: 'white' }}>TEST Back Button</Text>
+      </Pressable> */}
 
       <ScrollView contentContainerStyle={styles.scrollContent}
-                  keyboardShouldPersistTaps="handled" >
+                  keyboardShouldPersistTaps="handled" 
+                  pointerEvents="box-none">
         <View style={styles.topSection}>
           {/* --------- Product Image --------- */}
           <ProductImage 
@@ -106,6 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundBlue,
   },
   scrollContent: {
+    paddingTop: 140,      // Match your header height
     paddingBottom: 100, 
   },
   topSection: {
