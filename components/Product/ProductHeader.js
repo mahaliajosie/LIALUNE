@@ -35,8 +35,10 @@ export default function ProductHeader() {
           console.warn('Cannot Go Back')
         }
       }} style={styles.backButton}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} >
-        <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} > 
+        <Text>
+          <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
+        </Text>
       </Pressable>
 
       {/* ----- App Title ----- */}

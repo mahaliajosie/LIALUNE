@@ -1,5 +1,5 @@
 // ================================================
-// =============== FoundProducts.js ===============
+// ================ Found Products ================
 // ================================================
 // - Holds the results for the Search of Products 
 // - Bold Matches the typed results
@@ -14,7 +14,7 @@ import fonts from '../constants/fonts';
 import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
 
 
-const FoundProducts = ({ results, query }) => {
+const FoundProducts = ({ results, query, onPressResult }) => {
   const navigation = useNavigation();
 
   // - Filter Results based on query
@@ -31,7 +31,10 @@ const FoundProducts = ({ results, query }) => {
   // - Match typed search results
   const matchHighlight = (product) => {
     const fullName = `${product.brand} ${product.name}`;
-    if (!queryLower) { return fullName; } // * Don't highlight if empty
+    if (!queryLower) {
+      // * FIX - makes sure this match works not just for plain strings 
+      return <Text style={styles.productText}>{fullName}</Text>;
+    }
 
     // - Split name (not case sensitive) & save results
     const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
@@ -68,9 +71,13 @@ const FoundProducts = ({ results, query }) => {
                     styles.item,
                     pressed && styles.itemPressed
                   ]}
+                  // - Navigate to Product Page
                   onPress={() => {
-                      // - Navigate to Product Page
-                      navigation.navigate('ProductPage', { product});
+                    if (onPressResult) {
+                      onPressResult(product);
+                    } else {
+                      navigation.navigate('ProductPage', { product });
+                    }
                   }}
               >
                   {/* --- Product Images --- */}

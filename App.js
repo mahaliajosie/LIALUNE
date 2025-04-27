@@ -15,6 +15,7 @@ import { useFonts, Italiana_400Regular } from '@expo-google-fonts/italiana';
 import { Gantari_500Medium } from '@expo-google-fonts/gantari';
 import { Gantari_400Regular } from '@expo-google-fonts/gantari';
 import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
+import 'react-native-gesture-handler';
 
 // SCREENS
 import Startup from './pages/Startup';

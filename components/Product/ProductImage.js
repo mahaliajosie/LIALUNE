@@ -6,7 +6,7 @@
 // - Handles transparent vs. non-transparent images
 // --------------------------------------------------
 import React, { useState } from 'react';
-import { View, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
+import { View, Image, StyleSheet, Pressable, ActivityIndicator, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -58,7 +58,9 @@ export default function ProductImage({ product, imageURI, setCustomImage }) {
         onLoad={handleImageLoad}
       />
       <View style={styles.editIcon}>
-        <Ionicons name="create-outline" size={18} color={colors.lightCream} />
+        <Text>
+          <Ionicons name="create-outline" size={18} color={colors.lightCream} />
+        </Text>
       </View>
     </Pressable>
   );

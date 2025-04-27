@@ -16,16 +16,26 @@ import * as ImageManipulator from 'expo-image-manipulator';
 // @returns {Promise<boolean>} = returns true if the image has transparency
 // -------------------------------------------------------------------------
 export default async function checkTransparency(uri) {
+  let localURI = uri;
   try {
-    // * Downscale the image to reduce processing load
-    const resized = await ImageManipulator.manipulateAsync(uri, [{ resize: { width: 20, height: 20 } }], { base64: true });
 
-    if (!resized.base64) {
-      console.warn('Unable to process image for transparency check.');
-      return false;
+    // * Check if image is remote
+    if (uri.startsWith('http')) {
+      const downloadImg = await FileSystem.downloadAsync(
+        uri,
+        FileSystem.cacheDirectory + 'tmpImage.png'
+      );
+      localURI = downloadImg.uri;
     }
 
-    const base64Data = resized.base64;
+    // * Downscale the image to reduce processing load
+    const resized = await ImageManipulator.manipulateAsync(localURI, [{ resize: { width: 20, height: 20 } }], { base64: true });
+
+    if (!resized.base64) {
+      console.warn('Unable to process transparent image');
+      return false;
+    }
+    // const base64Data = resized.base64;
 
     // NOTE: Proper pixel-by-pixel alpha channel analysis would require a native module
     // This simplified method assumes that PNGs likely maintain transparency.
@@ -35,7 +45,6 @@ export default async function checkTransparency(uri) {
     if (uri.toLowerCase().endsWith('.png')) {
       return true; // Assume PNGs may contain transparency
     }
-
     // * Otherwise, assume no transparency for JPG, WEBP, etc.
     return false;
   } catch (error) {

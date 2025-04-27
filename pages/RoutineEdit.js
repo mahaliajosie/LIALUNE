@@ -77,7 +77,9 @@ export default function RoutineEdit({ route }) {
       {/* ---------- Header ---------- */}
       <View style={styles.header}>
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-            <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
+          <Text>
+              <Ionicons name="chevron-back" size={58} color={colors.lightCream} />
+            </Text>
         </Pressable>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{category}</Text>

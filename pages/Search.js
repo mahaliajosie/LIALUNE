@@ -13,7 +13,8 @@ import {
     Pressable, 
     KeyboardAvoidingView, 
     Platform, 
-    StatusBar, } from 'react-native';
+    StatusBar,
+    Text, } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import colors from '../constants/colors';
@@ -42,7 +43,9 @@ export default function Search({ navigation }) {
       <View style={styles.outerSearchContainer}>
         {/* --------- Back Button --------- */}
         <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-          <FontAwesomeIcon icon={faCircleChevronLeft} size={32} color={colors.primaryDeepBlue} />
+          <Text>
+            <FontAwesomeIcon icon={faCircleChevronLeft} size={32} color={colors.primaryDeepBlue} />
+          </Text>
         </Pressable>
         {/* --------- Search Bar --------- */}
         <View style={styles.searchContainer}>

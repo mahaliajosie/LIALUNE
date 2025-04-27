@@ -44,7 +44,9 @@ export default function AddToRoutineModal({ visible, onClose }) {
           {/* ---------- Pop-up Box ---------- */}
           <View style={styles.modalBox}>
             <Pressable onPress={onClose} style={styles.closeButton}>
-              <FontAwesomeIcon icon={faXmark} size={24} color={colors.primaryDeepBlue} />
+              <Text>
+                <FontAwesomeIcon icon={faXmark} size={24} color={colors.primaryDeepBlue} />
+              </Text>
             </Pressable>
             <Text style={styles.modalText}>Add to Routine Coming Soon!</Text>
           </View>
