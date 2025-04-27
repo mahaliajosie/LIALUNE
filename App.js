@@ -18,9 +18,9 @@ import { RammettoOne_400Regular } from '@expo-google-fonts/rammetto-one';
 import 'react-native-gesture-handler';
 
 // SCREENS
-import Startup from './pages/Startup';
-import NaviTabs from './navigation/NaviTabs';
-import RoutineEdit from './pages/RoutineEdit';
+import Startup from '@pages/Startup';
+import NaviTabs from '@navigation/NaviTabs';
+import RoutineEdit from '@pages/RoutineEdit';
 import Search from './pages/Search';
 import ProductPage from './pages/ProductPage';
 import { ProductProvider } from './context/ProductContext'; 

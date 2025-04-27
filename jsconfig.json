@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@pages/*": ["pages/*"],
+        "@components/*": ["components/*"],
+        "@assets/*": ["assets/*"],
+        "@constants/*": ["constants/*"],
+        "@navigation/*": ["navigation/*"],
+        "@utilities/*": ["utilities/*"],
+        "@context/*": ["context/*"],
+        "@data/*": ["data/*"]
+      }
+    },
+    "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
+  }
