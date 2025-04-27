@@ -38,7 +38,7 @@ export default function AddToRoutine({ visible, onClose }) {
       transparent
       visible={visible}
       animationType="none" // Using custom fade instead of default "fade"
-      onRequestClose={() => setModalVisible(false)}
+      onRequestClose={ onClose } // * FIX - correct prop
     >
       <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
         <BlurView intensity={80} tint="light" style={styles.blur}>
