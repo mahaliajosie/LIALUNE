@@ -29,6 +29,8 @@ import { ProductProvider } from '@context/ProductContext';
 // Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();
 
+console.log('GestureHandlerRootView:', GestureHandlerRootView);
+
 // Main App Function
 // - everything is initialized: screens, fonts, navigation, etc. 
 export default function App() {
@@ -54,20 +56,20 @@ export default function App() {
   // - 'Stack.Navigator' = sets up a stack navigation sturcture & 'headerShown: false' = hides default navigation bar at the top
   // - 'Stack.Screen' = defines the screens in the app 
   return (
-    // <GestureHandlerRootView style={{ flex: 1 }}>
-    <SafeAreaProvider>
-      <ProductProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false, gestureEnabled: true, }}>
-            <Stack.Screen name="Startup" component={Startup} />
-            <Stack.Screen name="Navigation" component={NaviTabs} />
-            <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
-            <Stack.Screen name="Search" component={Search} />
-            <Stack.Screen name="ProductPage" component={ProductPage} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ProductProvider>
-    </SafeAreaProvider>
-    // </GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <ProductProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false, gestureEnabled: true, }}>
+              <Stack.Screen name="Startup" component={Startup} />
+              <Stack.Screen name="Navigation" component={NaviTabs} />
+              <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
+              <Stack.Screen name="Search" component={Search} />
+              <Stack.Screen name="ProductPage" component={ProductPage} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ProductProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
