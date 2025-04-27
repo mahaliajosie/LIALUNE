@@ -21,9 +21,9 @@ import 'react-native-gesture-handler';
 import Startup from '@pages/Startup';
 import NaviTabs from '@navigation/NaviTabs';
 import RoutineEdit from '@pages/RoutineEdit';
-import Search from './pages/Search';
-import ProductPage from './pages/ProductPage';
-import { ProductProvider } from './context/ProductContext'; 
+import Search from '@pages/Search';
+import ProductPage from '@pages/ProductPage';
+import { ProductProvider } from '@context/ProductContext'; 
 
 // Create stack objects, to define screen transitions
 const Stack = createNativeStackNavigator();

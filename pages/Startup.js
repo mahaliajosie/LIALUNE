@@ -18,8 +18,8 @@ import React, { useEffect, useRef } from 'react';
 // * Animated = provides animation capabilities (moving, fading, scaling, etc.)
 import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 
 // (3) Defines & exports the Startup screen - accepts 'navigation' prop from React Navigation, lets you move between screens
 export default function Startup({ navigation }) {

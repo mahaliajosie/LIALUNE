@@ -13,12 +13,12 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 import { useNavigation } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
 import { RFValue } from "react-native-responsive-fontsize";
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 // ---------- Components ----------
-import RoutineRow from '../components/RoutineRow';
-import RoutineItem from '../components/RoutineItem';
-import productData from '../data/productData';
+import RoutineRow from '@components/RoutineRow';
+import RoutineItem from '@components/RoutineItem';
+import productData from '@data/productData';
 
 // ---------- Routine Edit Function ----------
 export default function RoutineEdit({ route }) {

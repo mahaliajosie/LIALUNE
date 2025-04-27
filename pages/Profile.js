@@ -5,18 +5,17 @@
 // - Upload a circular profile photo
 // - Edit users' name for the page
 // ------------------------------------------------
-
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, Pressable, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'; // * Allows user imports from device
 import { useNavigation } from '@react-navigation/native'; 
 // import { Ionicons } from '@expo/vector-icons';
 import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
-
-import ProfileOption from '../components/ProfileOption';
-
+// ------------------------------------------------
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
+import ProfileOption from '@components/ProfileOption';
+// ------------------------------------------------
 // * Profile function - the screen users see for their profile page
 export default function Profile() {
   const [image, setImage] = useState(null);               // users' uploaded image uri is held here OR default

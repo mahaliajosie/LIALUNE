@@ -8,16 +8,16 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Pressable, Text } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { useProductContext } from '../context/ProductContext';
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import { useProductContext } from '@context/ProductContext';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 // ---------- Components ----------
-import ProductHeader from '../components/Product/ProductHeader'; 
-import ProductImage from '../components/Product/ProductImage'; 
-import ProductDetails from '../components/Product/ProductDetails'; 
-import ProductActions from '../components/Product/ProductActions'; 
-import AddToRoutine from '../components/Product/modal/AddToRoutine';
-import ProductInfo from '../components/Product/ProductInfo';
+import ProductHeader from '@components/Product/ProductHeader'; 
+import ProductImage from '@components/Product/ProductImage'; 
+import ProductDetails from '@components/Product/ProductDetails'; 
+import ProductActions from '@components/Product/ProductActions'; 
+import AddToRoutine from '@components/Product/modal/AddToRoutine';
+import ProductInfo from '@components/Product/ProductInfo';
 // --------------------------------
 
 export default function ProductPage() {
