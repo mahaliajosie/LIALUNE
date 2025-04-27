@@ -19,6 +19,7 @@ import ProductActions from '@components/Product/ProductActions';
 import AddToRoutine from '@components/Product/modal/AddToRoutine';
 import ProductInfo from '@components/Product/ProductInfo';
 // --------------------------------
+// import { RectButton } from 'react-native-gesture-handler';
 
 export default function ProductPage() {
   const navigation = useNavigation();
@@ -40,15 +41,22 @@ export default function ProductPage() {
     <View style={styles.container}>
       {/* --------- Header (App Name & Back Button) --------- */}
       {/* <ProductHeader navigation={navigation} /> */}
-      <ProductHeader />
+      {/* <ProductHeader /> */}
+
+
       {/* <Pressable onPress={() => navigation.goBack()} style={{ padding: 20, backgroundColor: 'red' }}>
         <Text style={{ color: 'white' }}>TEST Back Button</Text>
       </Pressable> */}
-      <View style={{ padding: 20, backgroundColor: 'red' }}>
+      {/* <View style={{ padding: 20, backgroundColor: 'red' }}>
         <Text style={{ color: 'white' }}>Touchable Test Area</Text>
         <Pressable onPress={() => alert('Pressed!')} style={{ padding: 10, backgroundColor: 'blue' }}>
           <Text style={{ color: 'white' }}>Press Me</Text>
         </Pressable>
+      </View> */}
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <RectButton onPress={() => navigation.goBack()} style={{ padding: 20, backgroundColor: 'red' }}>
+          <Text style={{ color: 'white' }}>TEST BACK BUTTON</Text>
+        </RectButton>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}

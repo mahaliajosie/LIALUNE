@@ -9,6 +9,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, Platform, StatusBar } from 'react-native';
 // import { Ionicons } from '@expo/vector-icons';
+// import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
@@ -28,6 +29,11 @@ export default function ProductHeader() {
         <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(255,0,0,0.3)' }} />
       </Pressable> */}
+      {/* <RectButton onPress={() => navigation.goBack()} style={styles.backButton}>
+        <Text>
+          <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
+        </Text>
+      </RectButton> */}
 
       <Pressable onPress={() => { 
         if (navigation.canGoBack()) {

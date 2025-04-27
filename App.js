@@ -7,7 +7,7 @@
 
 // IMPORTS
 import React from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -56,7 +56,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ProductProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false }}>
+          <Stack.Navigator initialRouteName="Startup" screenOptions={{ headerShown: false, gestureEnabled: true, }}>
             <Stack.Screen name="Startup" component={Startup} />
             <Stack.Screen name="Navigation" component={NaviTabs} />
             <Stack.Screen name="RoutineEdit" component={RoutineEdit} />
