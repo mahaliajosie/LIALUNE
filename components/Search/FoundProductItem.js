@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import BoldText from './BoldText';
 import colors from '../../constants/colors';
 // import fonts from '../../constants/fonts';
-import spaPupImg from '../assets/spaPup.jpg';
+import spaPupImg from '../../assets/spaPup.jpg';
 
 export default function FoundProductItem({ product, query, onPressResult }) {
   const navigation = useNavigation();
