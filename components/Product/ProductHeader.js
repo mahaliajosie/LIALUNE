@@ -1,5 +1,5 @@
 // ==============================================
-// ============== ProductHeader.js ==============
+// =============== Product Header ===============
 // ==============================================
 // - Displays app name ("lialune") at the top
 // - Back button to navigate back
@@ -36,9 +36,7 @@ export default function ProductHeader() {
         }
       }} style={styles.backButton}
         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }} > 
-        <Text>
           <FontAwesomeIcon icon={faCircleChevronLeft} size={36} color={colors.mainLialune} />
-        </Text>
       </Pressable>
 
       {/* ----- App Title ----- */}

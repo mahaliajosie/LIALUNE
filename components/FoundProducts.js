@@ -32,7 +32,7 @@ const FoundProducts = ({ results, query, onPressResult }) => {
   const matchHighlight = (product) => {
     const fullName = `${product.brand} ${product.name}`;
     if (!queryLower) {
-      // * FIX - makes sure this match works not just for plain strings 
+      // - Makes sure this match works not just for plain strings 
       return <Text style={styles.productText}>{fullName}</Text>;
     }
 
@@ -42,19 +42,20 @@ const FoundProducts = ({ results, query, onPressResult }) => {
 
     return (
       <Text style={styles.productText} >
-      { parts.map((part, index) => {
-        if (part.toLowerCase() === queryLower) {
+      { parts.map((part, index) =>
+        part.toLowerCase() === queryLower ? (
           // - Match query & bold
-          return (
-            <Text key={index} style={styles.boldText} >
-              {part}
-            </Text>
-          );
-        }
-        // - Rest of the query is in regular text
-        return <Text key={index}>{part}</Text>;
-      })}
-      </Text>
+          <Text key={index} style={styles.boldText}>
+            {part}
+          </Text>
+        ) : (
+          // - Rest of the query is in regular text
+          <Text key={index} style={styles.productText}>
+            {part}
+          </Text>
+        )
+        )}
+        </Text>
     );
   };
     
