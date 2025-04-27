@@ -43,17 +43,15 @@ const FoundProducts = ({ results, query, onPressResult }) => {
     return (
       <Text style={styles.productText}>
       {parts.map((part, index) => {
-        regex.lastIndex = 0; // Reset Regex
-        return regex.test(part) ? ( 
+        if (!part) return null; // skip empty parts
+        return part.toLowerCase() === queryLower ? ( 
           // - Match query & bold
           <Text key={index} style={styles.boldText}>
             {part}
           </Text>
         ) : (
           // - Rest of the query is in regular text
-          <Text key={index} style={styles.productText}>
-            {part}
-          </Text>
+          <Text key={index}>{part}</Text>
         );
       })}
       </Text>
