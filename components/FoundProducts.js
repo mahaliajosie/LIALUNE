@@ -41,9 +41,10 @@ const FoundProducts = ({ results, query, onPressResult }) => {
     const parts = fullName.split(regex);
 
     return (
-      <Text style={styles.productText} >
-      { parts.map((part, index) =>
-        part.toLowerCase() === queryLower ? (
+      <Text style={styles.productText}>
+      {parts.map((part, index) => {
+        regex.lastIndex = 0; // Reset Regex
+        return regex.test(part) ? ( 
           // - Match query & bold
           <Text key={index} style={styles.boldText}>
             {part}
@@ -53,9 +54,9 @@ const FoundProducts = ({ results, query, onPressResult }) => {
           <Text key={index} style={styles.productText}>
             {part}
           </Text>
-        )
-        )}
-        </Text>
+        );
+      })}
+      </Text>
     );
   };
     
