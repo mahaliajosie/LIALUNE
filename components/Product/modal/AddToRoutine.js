@@ -39,7 +39,7 @@ export default function AddToRoutine({ visible, onClose }) {
       visible={visible}
       animationType="none" // Using custom fade instead of default "fade"
       onRequestClose={ onClose } // * FIX - correct prop
-    >
+    > { visible && ( 
       <Animated.View style={[styles.overlay, { opacity: fadeAnim }]}>
         <BlurView intensity={80} tint="light" style={styles.blur}>
           {/* ---------- Pop-up Box ---------- */}
@@ -51,6 +51,7 @@ export default function AddToRoutine({ visible, onClose }) {
           </View>
         </BlurView>
       </Animated.View>
+      )}
     </Modal>
   );
 }
