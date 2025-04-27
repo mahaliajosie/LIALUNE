@@ -5,8 +5,8 @@
 // -------------------------------------------
 import React from 'react';
 import { Text } from 'react-native';
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
+import colors from '@constants/colors';
+import fonts from '@constants/fonts';
 
 export default function BoldText({ text, query }) {
   if (!query) {
