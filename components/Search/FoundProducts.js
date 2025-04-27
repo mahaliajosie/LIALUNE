@@ -9,8 +9,8 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'; 
-import colors from '../constants/colors';
-import fonts from '../constants/fonts';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 import spaPupImg from '../assets/spaPup.jpg'; // fallback image 
 
 

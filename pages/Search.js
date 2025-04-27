@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import colors from '../constants/colors';
 import fonts from '../constants/fonts';
-import FoundProducts from '../components/FoundProducts';    // Product Search Results
+import FoundProducts from '../components/Search/FoundProducts';    // Product Search Results
 import productData from '../data/productData';              // SAMPLE product array
 // console.log(productData);
 // ////////////////////////////////////////////////////////////////////////////////////////////
