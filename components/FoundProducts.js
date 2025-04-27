@@ -44,14 +44,13 @@ const FoundProducts = ({ results, query, onPressResult }) => {
       <Text style={styles.productText}>
       {parts.map((part, index) => {
         if (!part) return null; // skip empty parts
-        return part.toLowerCase() === queryLower ? ( 
+        const foundMatch = part.toLowerCase() == queryLower.toLowerCase();
+        return (
           // - Match query & bold
-          <Text key={index} style={styles.boldText}>
+          // - Rest of the query is in regular text
+          <Text key={index} style={foundMatch ? styles.boldText : styles.productText}>
             {part}
           </Text>
-        ) : (
-          // - Rest of the query is in regular text
-          <Text key={index}>{part}</Text>
         );
       })}
       </Text>
