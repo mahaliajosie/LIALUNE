@@ -12,7 +12,6 @@ import { useProductContext } from '@context/ProductContext';
 import StarRating from './StarRating'; // Handles the 0.5-5 star rating system
 import colors from '@constants/colors';
 import fonts from '@constants/fonts';
-import { Icons } from '@constants/icons';
 
 export default function ProductDetails({ product, onAddPress }) {
   const { favorites, toggleFavorite, ratings, setRating } = useProductContext();
@@ -24,14 +23,7 @@ export default function ProductDetails({ product, onAddPress }) {
       {/* ---------- Favorite & Add Buttons ---------- */}
         {/* === should these buttons remain here OR in ProductActions? === */}
 
-      <View style={styles.topIcons}>
-        {/* <TouchableOpacity onPress={() => toggleFavorite(product.id)}> */}
-          {/* <Ionicons
-              name={isFavorited ? 'heart' : 'heart-outline'}
-              size={30}
-              color={colors.mainLialune}
-            /> */}
-        {/* </TouchableOpacity> */}
+      {/* <View style={styles.topIcons}>
         <Pressable onPress={() => toggleFavorite(product.id)} style={styles.iconButton} >
           <FontAwesomeIcon 
             icon={ isFavorited ? Icons.heartSolid : Icons.heartEmpty } 
@@ -41,10 +33,18 @@ export default function ProductDetails({ product, onAddPress }) {
         <Pressable onPress={() => setModalVisible(true)} style={styles. iconButton} > 
           <FontAwesomeIcon icon={Icons.addCircle} size={32} color={colors.mainLialune} />
         </Pressable>
+      </View> */}
+      {/* -------------touchable opacity version(x) ------------------- */}
+        {/* <TouchableOpacity onPress={() => toggleFavorite(product.id)}> */}
+          {/* <Ionicons
+              name={isFavorited ? 'heart' : 'heart-outline'}
+              size={30}
+              color={colors.mainLialune}
+            /> */}
+        {/* </TouchableOpacity> */}
         {/* <TouchableOpacity onPress={onAddPress}>
           <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />
         </TouchableOpacity> */}
-      </View>
 
       {/* ---------- Brand Logo & Product Info ---------- */}
       <Image

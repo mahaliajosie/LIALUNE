@@ -19,7 +19,7 @@ import fonts from '@constants/fonts';
 export default function ProductHeader() {
   const navigation = useNavigation();
   // console.log('Navigation object:', navigation);
-  console.log('Can go back?', navigation.canGoBack());
+  // console.log('Can go back?', navigation.canGoBack());
 
   return (
     <View style={styles.headerContainer} pointerEvents="box-none">

@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
     // pointerEvents: 'none',
   },
