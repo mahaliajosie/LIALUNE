@@ -56,6 +56,7 @@ export default function ProductImage({ product, imageURI, setCustomImage }) {
           styles.image,
           !isTransparent && styles.nonTransparentImage,
         ]}
+        resizeMode={isTransparent ? 'contain' : 'cover'}
         onLoad={handleImageLoad}
       />
       <View style={styles.editIcon}>
@@ -74,10 +75,10 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
-    pointerEvents: 'none',
+    // pointerEvents: 'none',
   },
   nonTransparentImage: {
     borderRadius: 16,

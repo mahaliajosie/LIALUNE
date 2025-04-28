@@ -42,19 +42,23 @@ export default function ProductPage() {
                   keyboardShouldPersistTaps="handled" 
                   pointerEvents="box-none">
         <View style={styles.topSection}>
-          {/* --------- Product Image --------- */}
-          <ProductImage 
-            product={product}
-            imageURI={imageURI}
-            setCustomImage={setCustomImage}
-          />
+          <View style={styles.imageContainer}>
+            {/* --------- Product Image --------- */}
+            <ProductImage 
+              product={product}
+              imageURI={imageURI}
+              setCustomImage={setCustomImage}
+            />
+          </View>
 
           {/* --------- Brand Logo, Name, Rating --------- */}
-          <ProductDetails 
-            product={product}
-            userRating={userRating}
-            setRating={setRating}
-          />
+          {/* <View style={styles.detailsContainer}> */}
+            <ProductDetails 
+              product={product}
+              userRating={userRating}
+              setRating={setRating}
+            />
+          {/* </View> */}
         </View>
         {/* --------- Favorite & Add Buttons --------- */}
         <ProductActions 
@@ -82,12 +86,12 @@ export default function ProductPage() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  button: { padding: 20, backgroundColor: 'red' },
-  text: { color: 'white' },
+  // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  // button: { padding: 20, backgroundColor: 'red' },
+  // text: { color: 'white' },
 
   scrollContent: {
-    paddingTop: 80,      // Match your header height
+    paddingTop: 80,      // Match header height
     paddingBottom: 100, 
   },
   topSection: {
@@ -96,6 +100,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
   },
+  imageContainer: {
+    width: 100, 
+    height: 100, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+  }
 });
 
 
