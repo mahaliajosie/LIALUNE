@@ -12,6 +12,7 @@ import { useProductContext } from '@context/ProductContext';
 import StarRating from './StarRating'; // Handles the 0.5-5 star rating system
 import colors from '@constants/colors';
 import fonts from '@constants/fonts';
+import { Icons } from '@constants/icons';
 
 export default function ProductDetails({ product, onAddPress }) {
   const { favorites, toggleFavorite, ratings, setRating } = useProductContext();
@@ -33,12 +34,12 @@ export default function ProductDetails({ product, onAddPress }) {
         {/* </TouchableOpacity> */}
         <Pressable onPress={() => toggleFavorite(product.id)} style={styles.iconButton} >
           <FontAwesomeIcon 
-            icon={ isFavorited ? 'fa-solid fa-heart' : 'fa-regular fa-heart' } 
+            icon={ isFavorited ? Icons.heartSolid : Icons.heartEmpty } 
             size={30}
             color={colors.mainLialune}/>
         </Pressable>  
         <Pressable onPress={() => setModalVisible(true)} style={styles. iconButton} > 
-          <FontAwesomeIcon icon={faCirclePlus} size={32} color={colors.mainLialune} />
+          <FontAwesomeIcon icon={Icons.addCircle} size={32} color={colors.mainLialune} />
         </Pressable>
         {/* <TouchableOpacity onPress={onAddPress}>
           <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />

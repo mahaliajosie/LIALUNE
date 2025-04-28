@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 import checkTransparency from '@utilities/checkTransparency';
 import colors from '@constants/colors';
+import { Icons } from '@constants/icons';
 
 export default function ProductImage({ product, imageURI, setCustomImage }) {
   const [isTransparent, setIsTransparent] = useState(true);
@@ -62,7 +63,7 @@ export default function ProductImage({ product, imageURI, setCustomImage }) {
       <View style={styles.editIcon}>
         <Text>
           {/* <Ionicons name="create-outline" size={18} color={colors.lightCream} /> */}
-          <FontAwesomeIcon icon={faPaintbrush} size={18} color={colors.primaryDeepBlue} />
+          <FontAwesomeIcon icon={Icons.edit} size={18} color={colors.primaryDeepBlue} />
         </Text>
       </View>
     </Pressable>
