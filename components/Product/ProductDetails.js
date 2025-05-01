@@ -46,11 +46,13 @@ export default function ProductDetails({ product, onAddPress }) {
           <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />
         </TouchableOpacity> */}
 
-      {/* ---------- Brand Logo & Product Info ---------- */}
-      <Image
+      {/* ---------- Brand Logo ---------- */}
+      {/* <Image
         source={{ uri: product.brandLogo }}
         style={styles.brandLogo}
-      />
+      /> */}
+
+      {/* ---------- Product Name ---------- */}
       <Text style={styles.productName}>{product.name}</Text>
 
       {/* ---------- Star Rating ---------- */}
@@ -84,7 +86,6 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: 'contain',
     marginBottom: 10,
-    // pointerEvents: 'none',
   },
   productName: {
     fontSize: 20,
@@ -93,6 +94,5 @@ const styles = StyleSheet.create({
     fontFamily: fonts.body,
     color: colors.mainLialune,
     marginBottom: 10,
-    // pointerEvents: 'none',
   },
 });

@@ -6,7 +6,7 @@
 // - "Add to Routine" pop-up redirect
 // -----------------------------------------------
 import React, { useState } from 'react';
-import { View, Pressable, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Pressable, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 // ---------- Components ----------
 import ProductHeader from '@components/Product/ProductHeader'; 
@@ -41,25 +41,6 @@ export default function ProductPage() {
       <ScrollView contentContainerStyle={styles.scrollContent}
                   keyboardShouldPersistTaps="handled" 
                   pointerEvents="box-none">
-        <View style={styles.topSection}>
-          <View style={styles.imageContainer}>
-            {/* --------- Product Image --------- */}
-            <ProductImage 
-              product={product}
-              imageURI={imageURI}
-              setCustomImage={setCustomImage}
-            />
-          </View>
-
-          {/* --------- Brand Logo, Name, Rating --------- */}
-          {/* <View style={styles.detailsContainer}> */}
-            <ProductDetails 
-              product={product}
-              userRating={userRating}
-              setRating={setRating}
-            />
-          {/* </View> */}
-        </View>
         {/* --------- Favorite & Add Buttons --------- */}
         <ProductActions 
            product={product}
@@ -67,6 +48,30 @@ export default function ProductPage() {
            toggleFavorite={toggleFavorite}
            setModalVisible={setModalVisible}
         />
+        {/* --------- Brand Logo --------- */}
+        {product.brandLogo && (
+          <Image
+            source={{ uri: product.brandLogo }}
+            style={styles.brandLogo}
+          />
+        )}
+        {/* --------- Product Image --------- */}
+        <View style={styles.topSection}>
+          <View style={styles.imageContainer}>
+            <ProductImage 
+              product={product}
+              imageURI={imageURI}
+              setCustomImage={setCustomImage}
+            />
+          </View>
+          {/* --------- Product Name & Rating --------- */}
+            <ProductDetails 
+              product={product}
+              userRating={userRating}
+              setRating={setRating}
+            />
+        </View>
+        
 
         {/* --------- Product Description, Directions, Ingredients --------- */}
         <ProductInfo
@@ -94,6 +99,12 @@ const styles = StyleSheet.create({
     paddingTop: 80,      // Match header height
     paddingBottom: 100, 
   },
+  brandLogo: {
+    width: 100,
+    height: 60,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
   topSection: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -105,7 +116,13 @@ const styles = StyleSheet.create({
     height: 200, 
     justifyContent: 'center', 
     alignItems: 'center', 
-  }
+  },
+  // detailsContainer: {
+  //   flex: 1,
+  //   justifyContent: 'flex-start',
+  //   alignItems: 'flex-start',
+  //   marginLeft: 20,
+  // },
 });
 
 
