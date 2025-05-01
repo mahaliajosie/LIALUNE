@@ -8,12 +8,11 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Pressable, ActivityIndicator, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-// import { Ionicons } from '@expo/vector-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-
-import checkTransparency from '@utilities/checkTransparency';
-import colors from '@constants/colors';
 import { Icons } from '@constants/icons';
+import colors from '@constants/colors';
+import checkTransparency from '@utilities/checkTransparency';
+
 
 export default function ProductImage({ product, imageURI, setCustomImage }) {
   const [isTransparent, setIsTransparent] = useState(true);

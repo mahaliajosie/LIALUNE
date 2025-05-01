@@ -9,24 +9,24 @@
 // -----------------------------------------------------
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHeart as solidHeart, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+// import { faHeart as solidHeart, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+// import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { Icons } from '@constants/icons';
 import StarRating from './StarRating';
-
 import colors from '@constants/colors';
 import fonts from '@constants/fonts';
-
+// -----------------------------------------------------
 export default function ProductDetails({ product, isFavorited, toggleFavorite, userRating, setRating, setModalVisible }) {
   return (
     <View style={styles.container}>
       {/* ---------- Favorite & Add Buttons ---------- */}
       <View style={styles.iconRow}>
         <Pressable onPress={() => toggleFavorite(product.id)} style={styles.iconButton}>
-          <FontAwesomeIcon icon={isFavorited ? solidHeart : regularHeart} size={30} color={colors.mainLialune} />
+          <FontAwesomeIcon icon={isFavorited ? Icons.heartSolid : Icons.heartEmpty} size={30} color={colors.mainLialune} />
         </Pressable>
         <Pressable onPress={() => setModalVisible(true)} style={styles.iconButton}>
-          <FontAwesomeIcon icon={faCirclePlus} size={30} color={colors.mainLialune} />
+          <FontAwesomeIcon icon={Icons.addCircle} size={30} color={colors.mainLialune} />
         </Pressable>
       </View>
 
@@ -34,7 +34,7 @@ export default function ProductDetails({ product, isFavorited, toggleFavorite, u
       <Image source={{ uri: product.brandLogo }} style={styles.logo} />
 
       {/* ---------- Product Name ---------- */}
-      <Text style={styles.name}>{product.name}</Text>
+      <Text style={styles.productName}>{product.name}</Text>
 
       {/* ---------- 5-Star Rating ---------- */}
       <StarRating
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   iconRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    gap: 16,
     marginBottom: 10,
+    gap: 16,
   },
   iconButton: {
     padding: 5,
@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginBottom: 10,
   },
-  name: {
-    fontFamily: fonts.body,
+  productName: {
     fontSize: 20,
+    fontFamily: fonts.body,
     color: colors.mainLialune,
     textAlign: 'right',
     marginBottom: 10,
