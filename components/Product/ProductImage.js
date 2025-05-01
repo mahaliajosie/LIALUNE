@@ -62,7 +62,6 @@ export default function ProductImage({ product, imageURI, setCustomImage }) {
       />
       <View style={styles.editIcon}>
         <Text>
-          {/* <Ionicons name="create-outline" size={18} color={colors.lightCream} /> */}
           <FontAwesomeIcon icon={Icons.edit} size={18} color={colors.primaryDeepBlue} />
         </Text>
       </View>
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'contain',
-    // pointerEvents: 'none',
   },
   nonTransparentImage: {
     borderRadius: 16,

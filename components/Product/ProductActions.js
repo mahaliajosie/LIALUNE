@@ -47,10 +47,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightCream,
     alignItems: 'center',
     justifyContent: 'center',
-    // pointerEvents: 'none',
   },
   pressed: {
     opacity: 0.6,
-    // pointerEvents: 'none',
   },
 });

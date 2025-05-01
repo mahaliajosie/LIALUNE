@@ -34,17 +34,6 @@ export default function ProductDetails({ product, onAddPress }) {
           <FontAwesomeIcon icon={Icons.addCircle} size={32} color={colors.mainLialune} />
         </Pressable>
       </View> */}
-      {/* -------------touchable opacity version(x) ------------------- */}
-        {/* <TouchableOpacity onPress={() => toggleFavorite(product.id)}> */}
-          {/* <Ionicons
-              name={isFavorited ? 'heart' : 'heart-outline'}
-              size={30}
-              color={colors.mainLialune}
-            /> */}
-        {/* </TouchableOpacity> */}
-        {/* <TouchableOpacity onPress={onAddPress}>
-          <Ionicons name="add-circle-outline" size={32} color={colors.mainLialune} />
-        </TouchableOpacity> */}
 
       {/* ---------- Brand Logo ---------- */}
       {/* <Image
@@ -70,15 +59,13 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     marginLeft: 20,
-    // justifyContent: 'center',
-    // pointerEvents: 'none',
+
   },
   topIcons: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignSelf: 'flex-end',
     marginBottom: 10,
-    // pointerEvents: 'none',
     // gap: 16,
   },
   brandLogo: {
@@ -89,10 +76,10 @@ const styles = StyleSheet.create({
   },
   productName: {
     fontSize: 20,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     fontFamily: fonts.body,
     color: colors.mainLialune,
     marginBottom: 10,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 });
