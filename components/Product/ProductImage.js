@@ -1,10 +1,10 @@
-// ==================================================
-// ================== ProductImage ==================
-// ==================================================
+// ===================================================
+// ================== Product Image ==================
+// ===================================================
 // - Displays (preferably transparent) Product Image
 // - Allows users to UPLOAD their own image
 // - Handles transparent vs. non-transparent images
-// --------------------------------------------------
+// ---------------------------------------------------
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Pressable, ActivityIndicator, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';

@@ -28,10 +28,11 @@ export default function ProductPage() {
           customImages, 
           setCustomImage } = useProductContext();
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const imageURI = customImages[product.id] || product.image;
   const userRating = ratings[product.id] || 0;
   const isFavorited = favorites[product.id];
-  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={{ flex: 1, backgroundColor: 'rgba(192, 17, 215, 0.1)' }}>
@@ -41,22 +42,9 @@ export default function ProductPage() {
       <ScrollView contentContainerStyle={styles.scrollContent}
                   keyboardShouldPersistTaps="handled" 
                   pointerEvents="box-none">
-        {/* --------- Favorite & Add Buttons --------- */}
-        <ProductActions 
-           product={product}
-           isFavorited={isFavorited}
-           toggleFavorite={toggleFavorite}
-           setModalVisible={setModalVisible}
-        />
-        {/* --------- Brand Logo --------- */}
-        {product.brandLogo && (
-          <Image
-            source={{ uri: product.brandLogo }}
-            style={styles.brandLogo}
-          />
-        )}
-        {/* --------- Product Image --------- */}
+
         <View style={styles.topSection}>
+          {/* --------- Product Image --------- */}
           <View style={styles.imageContainer}>
             <ProductImage 
               product={product}
@@ -71,6 +59,20 @@ export default function ProductPage() {
               setRating={setRating}
             />
         </View>
+        {/* --------- Favorite & Add Buttons --------- */}
+        <ProductActions 
+           product={product}
+           isFavorited={isFavorited}
+           toggleFavorite={toggleFavorite}
+           setModalVisible={setModalVisible}
+        />
+        {/* --------- Brand Logo --------- */}
+        {product.brandLogo && (
+          <Image
+            source={{ uri: product.brandLogo }}
+            style={styles.brandLogo}
+          />
+        )}
         
 
         {/* --------- Product Description, Directions, Ingredients --------- */}
